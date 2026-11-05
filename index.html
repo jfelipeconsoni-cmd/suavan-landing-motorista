@@ -9,12 +9,125 @@
      NAO-essencial: sob a LGPD isso pede opt-in, nao opt-out. O carregador vive
      em /consent.js, compartilhado pelos 3 sites. -->
 <script src="consent.js" defer></script>
-<title>Sua Van — o app do motorista de van escolar</title>
-<meta name="description" content="Cadastre seus alunos, veja quem pagou e quem está em atraso, e mande a cobrança pronta no WhatsApp com a sua chave Pix. Grátis, sem limite de alunos.">
+<title>Suavan — aplicativo para motorista de van escolar</title>
+<meta name="description" content="Aplicativo para motorista de transporte escolar: cadastre alunos, veja quem está em atraso e mande a cobrança pronta no WhatsApp com a sua chave Pix. Hoje é grátis, sem limite de alunos.">
 <link rel="canonical" href="https://motorista.suavan.com.br/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://suavan.com.br/#org",
+      "name": "Suavan",
+      "alternateName": "Sua Van",
+      "url": "https://suavan.com.br/",
+      "sameAs": [
+        "https://www.instagram.com/suavan.br/",
+        "https://www.tiktok.com/@suavan.br"
+      ]
+    },
+    {
+      "@type": "MobileApplication",
+      "name": "Suavan",
+      "alternateName": "Sua Van",
+      "operatingSystem": "Android",
+      "applicationCategory": "BusinessApplication",
+      "description": "Aplicativo de van escolar: o motorista de transporte escolar organiza alunos, mensalidades e cobrança, e manda a cobrança pronta no WhatsApp com a própria chave Pix.",
+      "url": "https://play.google.com/store/apps/details?id=io.suavan.motorista",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://suavan.com.br/#org"
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BRL"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "É grátis mesmo?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "É. Cadastrar alunos, marcar quem pagou e montar a cobrança é grátis, sem limite de alunos — e continua grátis. Se um dia houver algo pago, será à parte: o básico segue de graça."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como funciona a cobrança dos alunos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Quem cobra é você; o app deixa tudo pronto. Ele gera a mensalidade de cada aluno e monta a mensagem com o valor, o vencimento e a sua chave Pix — e você envia pelo WhatsApp, Telegram ou SMS."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O app fica com parte do meu dinheiro?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. O pai paga direto no seu Pix, e o dinheiro cai inteiro na sua conta. O valor da mensalidade é o que você combina com cada família — o app só registra."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "O pai pagou só metade. Dá para marcar?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Dá. Você marca o valor que entrou, e o restante fica em aberto até o pai completar."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Os pais precisam instalar alguma coisa?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. Eles recebem a sua cobrança no WhatsApp, com o valor, o vencimento e o seu Pix, e pagam direto para você. Se quiser, você manda um link para o responsável preencher nome, endereço e contato do aluno."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como faço para baixar o app?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pela Google Play. Toque em \"Disponível no Google Play\", aqui na página: abre a página do app na loja. Instale, crie a sua conta e cadastre o primeiro aluno. Hoje o app é só para Android."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Funciona sem internet?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No dia a dia, sim: os dados ficam no seu celular e sobem sozinhos quando pegar rede. Só duas coisas pedem internet: cadastrar uma escola nova, que é confirmada no Google para não duplicar, e gerar um recibo, porque o número dele vem do servidor. Reenviar um recibo já gerado funciona sem internet."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Dá para ver o caminho da van?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. O app cuida dos alunos, das mensalidades e da cobrança: quem pagou, quem está em atraso e a mensagem pronta com o seu Pix."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Os dados dos alunos ficam seguros?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ficam num servidor no Brasil, criptografados no celular e no caminho até lá; a Política de Privacidade está em suavan.com.br/privacidade. E se quiser sair, é você quem apaga: Configurações → \"Excluir minha conta\" apaga tudo, no celular e no servidor."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 <meta property="og:type" content="website">
-<meta property="og:title" content="Sua Van — o app do motorista de van escolar">
-<meta property="og:description" content="Papel e caneta não avisam quem está em atraso. O Sua Van avisa. Grátis, sem limite de alunos.">
+<meta property="og:title" content="Suavan — aplicativo para motorista de van escolar">
+<meta property="og:description" content="Papel e caneta não avisam quem está em atraso. O Suavan avisa. Hoje é grátis, sem limite de alunos.">
 <meta property="og:url" content="https://motorista.suavan.com.br/">
 <meta property="og:image" content="https://motorista.suavan.com.br/og-motorista.jpg">
 <meta name="twitter:card" content="summary_large_image">
