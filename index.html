@@ -12,11 +12,21 @@
   "@context": "https://schema.org",
   "@graph": [
     {
+      "@type": "WebSite",
+      "@id": "https://motorista.suavan.com.br/#site",
+      "url": "https://motorista.suavan.com.br/",
+      "name": "Suavan",
+      "alternateName": "Sua Van",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://suavan.com.br/#org" }
+    },
+    {
       "@type": "WebPage",
       "@id": "https://motorista.suavan.com.br/#pagina",
       "url": "https://motorista.suavan.com.br/",
       "name": "Suavan — aplicativo para motorista de van escolar",
       "inLanguage": "pt-BR",
+      "isPartOf": { "@id": "https://motorista.suavan.com.br/#site" },
       "copyrightHolder": { "@id": "https://suavan.com.br/#org" },
       "copyrightYear": 2026,
       "copyrightNotice": "© 2026 Suavan. Todos os direitos reservados. Software e conteúdo proprietários.",
@@ -40,9 +50,11 @@
       "name": "Suavan",
       "alternateName": "Sua Van",
       "url": "https://suavan.com.br/",
+      "logo": "https://motorista.suavan.com.br/img/icone-app.jpg",
       "sameAs": [
         "https://www.instagram.com/suavan.br/",
-        "https://www.tiktok.com/@suavan.br"
+        "https://www.tiktok.com/@suavan.br",
+        "https://www.linkedin.com/company/sua-van/"
       ]
     },
     {
@@ -70,6 +82,7 @@
 <meta property="og:title" content="Suavan — aplicativo para motorista de van escolar">
 <meta property="og:description" content="Papel e caneta não avisam quem está em atraso. O Suavan avisa. Hoje é grátis, sem limite de alunos.">
 <meta property="og:url" content="https://motorista.suavan.com.br/">
+<meta property="og:site_name" content="Suavan">
 <meta property="og:image" content="https://motorista.suavan.com.br/og-motorista.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://motorista.suavan.com.br/og-motorista.jpg">
