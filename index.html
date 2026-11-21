@@ -3,19 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- Microsoft Clarity — carregado SOMENTE apos consentimento explicito.
-     Antes, o script subia aqui no <head> e comecava a gravar a sessao no
-     primeiro milissegundo, sem perguntar nada. Analise de uso e finalidade
-     NAO-essencial: sob a LGPD isso pede opt-in, nao opt-out. O carregador vive
-     em /consent.js, compartilhado pelos 3 sites. -->
-<script src="consent.js" defer></script>
+<!-- Microsoft Clarity: carregado SÓ depois do aceite no aviso (o opt-in da LGPD). O carregador é o /consent.js,
+     o mesmo dos 3 sites. Com data-banner-style="page", o aviso usa o visual desta página (o bloco .consent-banner do CSS).
+     O mapa dos itens medidos está na "Landing nova do motorista — análise do Figma" (§7), no cofre. -->
+<script src="consent.js" defer data-banner-style="page"></script>
 <title>Suavan — aplicativo para motorista de van escolar</title>
 <meta name="description" content="Aplicativo para motorista de transporte escolar: cadastre alunos, veja quem está em atraso e mande a cobrança pronta no WhatsApp com a sua chave Pix. Hoje é grátis, sem limite de alunos.">
 <link rel="canonical" href="https://motorista.suavan.com.br/">
+<!-- O FAQPage repete as perguntas e as respostas da seção de dúvidas (o Google pede as mesmas da página).
+     O WebPage leva os campos de direitos autorais do kit de 07/11. -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://motorista.suavan.com.br/#pagina",
+      "url": "https://motorista.suavan.com.br/",
+      "name": "Suavan — aplicativo para motorista de van escolar",
+      "inLanguage": "pt-BR",
+      "copyrightHolder": { "@id": "https://suavan.com.br/#org" },
+      "copyrightYear": 2026,
+      "copyrightNotice": "© 2026 Suavan. Todos os direitos reservados. Software e conteúdo proprietários.",
+      "creditText": "Suavan",
+      "license": "https://suavan.com.br/termos/"
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        { "@type": "Question", "name": "O Suavan é grátis mesmo?", "acceptedAnswer": { "@type": "Answer", "text": "É, hoje é grátis: cadastrar alunos, marcar quem pagou e montar a cobrança, sem limite de alunos. Se um dia alguma parte for paga, o Suavan avisa antes, no app e por e-mail, e a cobrança só começa depois que você aceitar os Termos novos." } },
+        { "@type": "Question", "name": "O dinheiro dos pais passa pelo Suavan?", "acceptedAnswer": { "@type": "Answer", "text": "Não. O pai paga direto no seu Pix, e o dinheiro cai inteiro na sua conta. O app só registra." } },
+        { "@type": "Question", "name": "Quem define o valor da mensalidade?", "acceptedAnswer": { "@type": "Answer", "text": "Você. O valor é o que você combina com cada família, e o app só registra." } },
+        { "@type": "Question", "name": "Os pais precisam baixar o app?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Eles recebem a sua cobrança no WhatsApp, com o valor, o vencimento e o seu Pix, e pagam direto para você. Se quiser, você manda um link para o responsável preencher nome, endereço e contato do aluno." } },
+        { "@type": "Question", "name": "Funciona no iPhone?", "acceptedAnswer": { "@type": "Answer", "text": "Ainda não. Hoje o Suavan é só para Android, pela Google Play. A versão para iPhone está a caminho." } },
+        { "@type": "Question", "name": "Preciso entender de tecnologia?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Se você usa o WhatsApp, você usa o Suavan: cadastra o aluno, marca quem pagou e manda a cobrança pronta." } }
+      ]
+    },
     {
       "@type": "Organization",
       "@id": "https://suavan.com.br/#org",
@@ -44,83 +67,6 @@
         "price": "0",
         "priceCurrency": "BRL"
       }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "É grátis mesmo?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "É, hoje é grátis: cadastrar alunos, marcar quem pagou e montar a cobrança, sem limite de alunos. Se um dia alguma parte for paga, o Suavan avisa antes, no app e por e-mail, e a cobrança só começa depois que você aceitar os Termos novos."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Como funciona a cobrança dos alunos?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Quem cobra é você; o app deixa tudo pronto. Ele gera a mensalidade de cada aluno e monta a mensagem com o valor, o vencimento e a sua chave Pix — e você envia pelo WhatsApp, Telegram ou SMS."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "O app fica com parte do meu dinheiro?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Não. O pai paga direto no seu Pix, e o dinheiro cai inteiro na sua conta. O valor da mensalidade é o que você combina com cada família — o app só registra."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "O pai pagou só metade. Dá para marcar?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Dá. Você marca o valor que entrou, e o restante fica em aberto até o pai completar."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Os pais precisam instalar alguma coisa?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Não. Eles recebem a sua cobrança no WhatsApp, com o valor, o vencimento e o seu Pix, e pagam direto para você. Se quiser, você manda um link para o responsável preencher nome, endereço e contato do aluno."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Como faço para baixar o app?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Pela Google Play. Toque em \"Disponível no Google Play\", aqui na página: abre a página do app na loja. Instale, crie a sua conta e cadastre o primeiro aluno. Hoje o app é só para Android."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Funciona sem internet?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No dia a dia, sim: os dados ficam no seu celular e sobem sozinhos quando pegar rede. Só duas coisas pedem internet: cadastrar uma escola nova, que é confirmada no Google para não duplicar, e gerar um recibo, porque o número dele vem do servidor. Reenviar um recibo já gerado funciona sem internet."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Dá para ver o caminho da van?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Não. O app cuida dos alunos, das mensalidades e da cobrança: quem pagou, quem está em atraso e a mensagem pronta com o seu Pix."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Os dados dos alunos ficam seguros?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Ficam num servidor no Brasil, criptografados no celular e no caminho até lá; a Política de Privacidade está em suavan.com.br/privacidade. E se quiser sair, é você quem apaga: Configurações → \"Excluir minha conta\" apaga tudo, no celular e no servidor."
-          }
-        }
-      ]
     }
   ]
 }
@@ -134,603 +80,996 @@
 <meta name="twitter:image" content="https://motorista.suavan.com.br/og-motorista.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Fontes do Design System (Inter, Francois One) — ⛔ SEM `text=`: na API css2 o `text=`
-     subconjunta TODAS as famílias do pedido, não só a última. Foi assim que, de 16 a 17/09, o
-     "SUAVAN" do topo e metade das letras do corpo caíram na fonte do sistema nesta página. -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Francois+One&display=swap" rel="stylesheet">
-<!-- Caveat em pedido SEPARADO, com subconjunto `text=` (só os caracteres do caderno — se o texto
-     do caderno mudar, a lista muda junto): é a letra de caneta do inimigo nomeado pela narrativa. -->
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&text=%20012358%3FAHJKMRabcdegilmnopqrstuvw%E2%80%94%E2%9C%93&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=account_balance_wallet,arrow_forward,chat,check_circle,close,directions_bus,download,edit_note,expand_more,family_restroom,groups,how_to_reg,link,lock,manage_accounts,menu,notifications_active,support_agent,toggle_on&display=block" rel="stylesheet">
+<!-- Fontes da marca nova (Design System, §1.1): Inter no texto e Special Gothic Expanded One no display.
+     ⛔ Sem `text=`: na API css2 ele corta TODAS as famílias do pedido (foi assim que o logo quebrou em 16/09). -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
 <style>
-  /* ---------- tokens do Design System ---------- */
-  :root{
-    --y400:#FACC15;--y500:#FFC500;
-    --g900:#111827;--g800:#1F2937;--g700:#374151;--g600:#4B5563;--g500:#6B7280;
-    --g400:#9CA3AF;--g300:#D1D5DB;--g200:#E5E7EB;--g100:#F3F4F6;--g50:#F9FAFB;
-    --cream:#FFFBEB;--green:#16A34A;--green800:#166534;--orange700:#C2410C;--red:#EF4444;--red700:#B91C1C;
-    --display:"Francois One",Impact,sans-serif;--body:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;--hand:Caveat,cursive;
-  }
-  /* Mobile-first: as regras sem media query são o CELULAR; os blocos min-width
-     (600 / 760 / 980) só acrescentam o que muda em tela maior. */
-  *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important;animation:none!important}}
-  body{font-family:var(--body);color:var(--g900);background:#fff;line-height:1.55;-webkit-font-smoothing:antialiased}
-  a{color:inherit;text-decoration:none}
-  img{max-width:100%}
-  :focus-visible{outline:3px solid var(--g900);outline-offset:3px}
-  .hero :focus-visible{outline-color:var(--y400)}
-  .skip{position:absolute;left:16px;top:-60px;z-index:30;background:var(--g900);color:#fff;padding:10px 14px;border-radius:10px;font-weight:600}
-  .skip:focus{top:12px}
-  /* text-transform:none — a ligadura do ícone é sensível a maiúsculas (o eyebrow é uppercase) */
-  .ms{font-family:"Material Symbols Outlined";font-weight:normal;font-style:normal;line-height:1;display:inline-block;vertical-align:middle;font-size:20px;text-transform:none}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 16px}
-  h1,h2,h3{font-weight:700;line-height:1.15}
-  h1,h2{font-family:var(--body);font-weight:700;letter-spacing:-.4px}
-  b{font-weight:700}
-
-  /* ---------- botões (DS §3.1–3.2) ---------- */
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 22px;border-radius:12px;font-weight:700;font-size:15px;border:1px solid transparent;cursor:pointer;transition:background .15s,transform .15s}
-  .btn:active{transform:translateY(1px)}
-  .btn-primary{background:var(--y400);color:var(--g900)}
-  .btn-primary:hover{background:#E9BD14}
-  .btn-outline{background:#fff;color:var(--g800);border-color:var(--g300);font-weight:600;font-size:14px}
-  .btn-outline:hover{background:var(--g50)}
-  .btn-lg{height:54px;padding:0 26px;font-size:16px}
-
-  /* ---------- cabeçalho: no celular, wordmark + CTA + menu ≡ ---------- */
-  header.top{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--g200)}
-  .nav{height:64px;display:flex;align-items:center;gap:8px}
-  .home{display:inline-flex;align-items:center;gap:10px;color:var(--g800);font-weight:700;padding:6px 8px 6px 6px;border-radius:12px}
-  .home:hover{background:var(--g100)}
-  .wordmark{font-family:var(--display);font-size:24px;color:var(--g800);background:var(--y500);padding:2px 10px;border-radius:6px;line-height:1.15;letter-spacing:.4px}
-  .nav .cta{margin-left:auto;height:44px;padding:0 14px;font-size:14px;white-space:nowrap}
-  .menu{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:0;background:none;border-radius:10px;color:var(--g700);cursor:pointer;flex:0 0 auto}
-  .menu:hover{background:var(--g100)}
-  .menu .ms{font-size:26px}
-  /* O painel de links fica escondido sob o cabeçalho até o ≡ abrir. */
-  .nav-links{display:none;position:absolute;left:0;right:0;top:64px;background:#fff;border-bottom:1px solid var(--g200);flex-direction:column;padding:8px 12px 12px;box-shadow:0 14px 30px rgba(17,24,39,.10)}
-  .nav-links.open{display:flex}
-  .nav-links a{display:flex;align-items:center;min-height:48px;font-size:16px;font-weight:500;color:var(--g700);padding:8px 12px;border-radius:10px}
-  .nav-links a:hover{color:var(--g900);background:var(--g100)}
-
-  @media (max-width:339px){
-    .home{padding:6px 4px}.wordmark{font-size:22px;padding:2px 8px}
-    .nav{gap:4px}.nav .cta{padding:0 10px;font-size:13px}.menu{width:40px}
+  /* ---------- tokens da marca nova (Design System, §1.1; Figma "Biblioteca Suavan (em uso)") ---------- */
+  :root {
+    --amarelo: #FFC500;          /* marca/amarelo: o lado ativo da chave, o botão do menu, o fundo do menu aberto */
+    --amarelo-destaque: #EFB300; /* marca/amarelo-destaque: o "van" do logo */
+    --ambar-borda: #E0A800;      /* marca/âmbar-borda: a borda da chave */
+    --tinta: #111827;            /* neutro/tinta: a barra do menu, os títulos */
+    --branco: #FFFFFF;
+    --texto-auxiliar: #636A77;   /* neutro/texto-auxiliar */
+    --fundo: #FCF7EE;            /* neutro/fundo: o fundo único da página */
+    --whatsapp: #25D366;
+    --whatsapp-hover: #1EBE5A;
+    --display: "Special Gothic Expanded One", "Arial Black", sans-serif;
+    --texto: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+    /* com o cabeçalho estático, a âncora leva ao topo da seção (o "Topo de rolagem" do Figma) */
+    --topo-ancora: 0px;
   }
 
-  /* ---------- hero: a tese ---------- */
-  .hero{background:var(--g900);color:#fff;padding:44px 0 48px;overflow:hidden}
-  /* Três blocos, na ordem do celular: copy → prova visual → selos. */
-  .hero-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:28px;align-items:center}
-  .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:600;letter-spacing:.6px;text-transform:uppercase;color:var(--y400);margin-bottom:16px}
-  .eyebrow .ms{font-size:18px}
-  .hero h1{font-size:31px;line-height:1.1;color:#fff;margin-bottom:14px}
-  .hero h1 .hl{color:var(--y400)}
-  .hero .lead{font-size:16.5px;color:#D1D5DB;max-width:540px;margin-bottom:22px}
-  .hero-ctas{display:flex;flex-direction:column;align-items:stretch;gap:16px}
-  .hero-ctas .link{font-size:15px;font-weight:600;color:#E5E7EB;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:44px}
-  .hero-ctas .link:hover{color:var(--y400)}
-  .trust{display:grid;grid-template-columns:1fr;gap:8px;font-size:13.5px;color:#D1D5DB}
-  .trust span{display:inline-flex;align-items:flex-start;gap:6px}
-  .trust .ms{font-size:17px;color:var(--y400);flex:0 0 auto}
-  .note{margin-top:18px;font-size:13.5px;color:#9CA3AF;max-width:540px}
-  .phone{width:180px;margin:0 auto;background:#0B0F19;border-radius:28px;padding:7px;box-shadow:0 30px 70px rgba(0,0,0,.45);border:1px solid #2A3140}
-  .phone img{display:block;width:100%;height:auto;border-radius:22px}
-  /* a assinatura: o caderno vira app (caderno + seta + celular) */
-  .signature{position:relative;display:grid;grid-template-columns:150px minmax(0,1fr);align-items:center;gap:0;max-width:340px;margin:0 auto}
-  .paper{position:relative;transform:rotate(-3deg);background:#FFFEF7;border-radius:6px;padding:16px 8px 14px 26px;min-height:210px;color:var(--g800);box-shadow:0 24px 48px rgba(0,0,0,.35);background-image:linear-gradient(transparent 27px,#D9E2F2 27px,#D9E2F2 28px);background-size:100% 28px;z-index:1}
-  .paper::before{content:"";position:absolute;left:18px;top:0;bottom:0;width:1.5px;background:#F2A6A6}
-  .paper .ttl{font-family:var(--hand);font-size:18px;line-height:28px;color:var(--g900);text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:4px;white-space:nowrap}
-  .paper .ln{font-family:var(--hand);font-size:16px;line-height:28px;white-space:nowrap}
-  .paper .ok{color:var(--green800)}
-  .paper .due{color:var(--red700)}
-  .paper .mark{background:linear-gradient(transparent 55%,rgba(250,204,21,.75) 55%)}
-  .paper .scratch{text-decoration:line-through;color:var(--g500)}
-  .arrow{position:absolute;left:126px;top:46%;z-index:3;width:40px;height:40px;border-radius:999px;background:var(--y400);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px rgba(0,0,0,.35)}
-  .arrow .ms{font-size:22px;color:var(--g900)}
-  .signature .phone{margin:0;justify-self:end;width:100%;max-width:180px}
-  /* ---------- faixa ESCOLAR: o divisor de seções ---------- */
-  .band{background:var(--cream);border-top:1px solid #FDE68A;border-bottom:1px solid #FDE68A}
-  .band .inner{display:flex;align-items:flex-start;gap:14px;padding:24px 16px}
-  .band .ic{width:44px;height:44px;border-radius:50%;background:var(--y400);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
-  .band .ic .ms{font-size:24px;color:var(--g900)}
-  .band h2{font-size:18px;color:var(--g900);margin-bottom:4px;letter-spacing:-.2px}
-  .band p{font-size:15px;color:var(--g700);max-width:760px}
-
-  /* ---------- seções ---------- */
-  section{padding:52px 0;scroll-margin-top:72px}
-  .sec-tag{font-size:12.5px;font-weight:700;letter-spacing:.8px;color:var(--g500);text-transform:uppercase;margin-bottom:10px}
-  .sec-title{font-size:26px;color:var(--g900);margin-bottom:12px}
-  .sec-sub{font-size:16px;color:var(--g600);max-width:640px;margin-bottom:28px}
-  .center{text-align:center}.sec-sub.center{margin-left:auto;margin-right:auto}
-
-  .steps{display:grid;grid-template-columns:1fr;gap:14px}
-  .step{background:#fff;border:1px solid var(--g200);border-radius:12px;padding:22px 20px}
-  .step .num{font-family:var(--body);font-weight:700;font-size:30px;color:var(--y500);line-height:1;margin-bottom:12px}
-  .step h3{font-size:17px;margin-bottom:6px}
-  .step p{font-size:14.5px;color:var(--g600)}
-
-  .cards{display:grid;grid-template-columns:1fr;gap:14px}
-  .card{background:#fff;border:1px solid var(--g200);border-radius:14px;padding:22px 20px}
-  .card .ic{width:48px;height:48px;border-radius:12px;background:rgba(250,204,21,.18);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
-  .card .ic .ms{font-size:26px;color:#92611A}
-  .card h3{font-size:16.5px;margin-bottom:7px}
-  .card p{font-size:14px;color:var(--g600)}
-  .card a{color:var(--g900);text-decoration:underline;text-underline-offset:3px}
-  .legal-links{margin-top:22px;font-size:13.5px;color:var(--g500);display:flex;flex-wrap:wrap;gap:0 18px}
-  .legal-links a{text-decoration:underline;text-underline-offset:3px;display:inline-flex;align-items:center;min-height:40px}
-
-  /* telas do app */
-  .screens{display:grid;grid-template-columns:1fr;gap:28px;max-width:260px;margin:0 auto}
-  .screen{display:flex;flex-direction:column;gap:14px}
-  .screen .frame{background:#0B0F19;border-radius:24px;padding:7px;border:1px solid #2A3140}
-  .screen img{display:block;width:100%;height:auto;border-radius:18px}
-  .screen h3{font-size:16px}
-  .screen p{font-size:14px;color:var(--g600)}
-  .screen figcaption{text-align:center}
-  .sec-cta{margin-top:32px;display:flex;justify-content:center}
-  .sec-cta .btn{width:100%}
-
-  /* ---------- selo oficial do Google Play ----------
-     Diretriz da marca (Partner Marketing Hub do Google, lida em 11/10/2026): o arquivo é o
-     oficial em português do Brasil, sem mudar cor, proporção nem elementos; altura mínima de
-     28 px; respiro em volta de, no mínimo, 1/4 da altura (aqui, 14 px); fundo liso. */
-  .play-badge{display:inline-flex;align-self:flex-start;border-radius:8px}
-  .play-badge img{display:block;height:56px;width:auto}
-  .hero-ctas .play-badge{align-self:center} /* no celular, centrado como o "Sou pai ou mãe" abaixo */
-
-  /* ---------- seção "Baixar o app" (#acesso: o id antigo fica, para os links já espalhados) ---------- */
-  #acesso{background:var(--g50);border-top:1px solid var(--g200)}
-  .acesso-grid{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
-  .acesso-copy h2{font-size:26px;margin-bottom:12px}
-  .acesso-copy p{font-size:16px;color:var(--g600);max-width:520px;margin-bottom:20px}
-  .acesso-copy ul{list-style:none;display:grid;gap:10px}
-  .acesso-copy li{display:flex;gap:10px;align-items:flex-start;font-size:15px;color:var(--g700)}
-  .acesso-copy li .ms{color:var(--green);font-size:20px;flex:0 0 auto;margin-top:1px}
-  .acesso-card{background:#fff;border:1px solid var(--g200);border-radius:16px;padding:22px 18px;display:flex;flex-direction:column}
-  .acesso-card h3{font-size:18px;margin-bottom:4px}
-  .acesso-card p.sub{font-size:14px;color:var(--g600);margin-bottom:16px}
-  .acesso-card .play-badge{margin:0 0 4px}
-  .acesso-card .sep{height:1px;background:var(--g200);margin:22px 0 20px}
-  .acesso-card h3.alt{font-size:16px}
-  .acesso-card .btn{width:100%;margin-top:12px;padding:0 14px;white-space:nowrap}
-  .acesso-card p.note{font-size:13.5px;color:var(--g500);margin-top:12px;line-height:1.6}
-  .acesso-card p.note a{text-decoration:underline;text-underline-offset:3px}
-  /* faq */
-  .faq{max-width:760px}
-  details{border-bottom:1px solid var(--g200);padding:6px 0}
-  details:first-of-type{border-top:1px solid var(--g200)}
-  summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;font-weight:600;font-size:16px;color:var(--g900);padding:12px 0;min-height:48px}
-  summary::-webkit-details-marker{display:none}
-  summary .ms{color:var(--g500);transition:transform .2s;flex:0 0 auto}
-  details[open] summary .ms{transform:rotate(180deg)}
-  details p{margin:2px 0 12px;font-size:15px;color:var(--g600);max-width:680px}
-
-  footer{border-top:1px solid var(--g200);padding:30px 0;color:var(--g500);font-size:13.5px}
-  footer .row{display:flex;flex-direction:column;gap:10px;align-items:flex-start}
-  footer .links{display:flex;flex-wrap:wrap;gap:0 18px}
-  footer .links a{display:inline-flex;align-items:center;min-height:40px}
-  footer a{color:var(--g600)}footer a:hover{color:var(--g900)}
-  footer .foot-brand{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-  footer .social{display:flex;gap:4px}
-  footer .social a{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:8px}
-  footer .social a:hover{background:var(--g100)}
-  footer .social a[hidden]{display:none} /* rede sem página ainda (Facebook): fica no HTML, não aparece */
-  footer .social svg{width:20px;height:20px;fill:currentColor}
-  footer .tm{flex-basis:100%;font-size:12.5px;color:var(--g500)} /* atribuição da marca Google Play, por usar o selo */
-
-  /* ---------- telas maiores: só o que muda ---------- */
-  @media (min-width:600px){
-    .wrap{padding:0 20px}
-    .hero{padding:60px 0 64px}
-    .hero h1{font-size:38px}
-    .hero .lead{font-size:18px}
-    .hero-ctas{flex-direction:row;align-items:center;gap:22px}
-    .hero-ctas .play-badge{align-self:auto}
-    .trust{display:flex;flex-wrap:wrap;gap:18px}
-    .trust span{align-items:center}
-    .hero-ctas .link{font-size:14.5px}
-    .phone{width:230px;border-radius:32px;padding:9px}.phone img{border-radius:24px}
-    .band .inner{align-items:center;gap:18px;padding:28px 20px}
-    .band .ic{width:52px;height:52px}.band .ic .ms{font-size:26px}
-    .band h2{font-size:19px}
-    section{padding:72px 0}
-    .sec-title{font-size:28px}
-    .sec-sub{font-size:17px;margin-bottom:36px}
-    .steps,.cards{grid-template-columns:1fr 1fr;gap:18px}
-    .step{padding:26px 22px}
-    .card{padding:24px 20px}
-    .legal-links{margin-top:26px}
-    details{padding:8px 0}
-    summary{font-size:16.5px}
-    footer{padding:34px 0}
-    footer .row{flex-direction:row;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px}
-    footer .copy{margin-left:auto}
-    .signature{max-width:460px}
-    .signature .phone{max-width:230px}
-    .paper{min-height:250px;padding:20px 12px 18px 36px;background-size:100% 32px;background-image:linear-gradient(transparent 31px,#D9E2F2 31px,#D9E2F2 32px)}
-    .paper::before{left:26px}
-    .paper .ttl{font-size:22px;line-height:32px}.paper .ln{font-size:19px;line-height:32px}
-    .paper::before{left:26px}
-    .arrow{left:136px;width:46px;height:46px}.arrow .ms{font-size:26px}
-    .screens{grid-template-columns:1fr 1fr;max-width:640px}
-    .screen .frame{border-radius:28px;padding:8px}.screen img{border-radius:21px}
-    .screen figcaption{text-align:left}
-    .sec-cta{margin-top:40px}.sec-cta .btn{width:auto}
-    .acesso-card{padding:28px}
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    margin: 0;
+    background: var(--fundo);
+    color: var(--tinta);
+    font-family: var(--texto);
+    -webkit-font-smoothing: antialiased;
   }
-  @media (min-width:840px){
-    .nav{gap:4px}
-    .menu{display:none}
-    .nav-links{display:flex;position:static;flex-direction:row;gap:4px;margin-left:auto;background:none;border:0;padding:0;box-shadow:none}
-    .nav-links a{display:inline-block;min-height:0;font-size:14.5px;color:var(--g600);padding:8px 12px}
-    .nav .cta{margin-left:0;height:44px;padding:0 16px}
+  img { display: block; max-width: 100%; }
+  :focus-visible { outline: 2px solid var(--amarelo); outline-offset: 2px; }
+  html.menu-aberto { overflow: hidden; }
+
+  .pular {
+    position: absolute; left: -9999px; top: 12px; z-index: 60;
+    background: var(--tinta); color: var(--branco); padding: 10px 14px; border-radius: 12px;
+    font-weight: 600; text-decoration: none;
   }
-  @media (min-width:980px){
-    .hero{padding:72px 0 80px}
-    .hero-grid{grid-template-columns:1.02fr .98fr;gap:0 56px}
-    /* O bloco copy+selos fica centralizado contra a prova visual: a sobra de altura vai acima da copy e abaixo dos selos. */
-    .hero-copy{grid-column:1;grid-row:1;align-self:end}
-    .hero-proof{grid-column:1;grid-row:2;margin-top:24px;align-self:start}
-    .hero-visual{grid-column:2;grid-row:1/3;align-self:center;justify-self:end}
-    .eyebrow{margin-bottom:22px}
-    .hero h1{font-size:48px;margin-bottom:20px}
-    .hero .lead{margin-bottom:30px}
-    .phone{width:270px;margin:0;border-radius:36px;padding:10px}.phone img{border-radius:27px}
-    .band .inner{gap:22px;padding:30px 20px}
-    .band .ic{width:56px;height:56px}.band .ic .ms{font-size:28px}
-    .band h2{font-size:22px}
-    section{padding:80px 0}
-    .sec-title{font-size:34px}
-    .sec-sub{margin-bottom:44px}
-    .steps{grid-template-columns:repeat(3,1fr)}
-    .cards{grid-template-columns:repeat(4,1fr)}
-    .signature{grid-template-columns:200px 1fr;max-width:none;margin:0;width:100%}
-    .signature .phone{max-width:270px}
-    .paper{min-height:300px;padding:26px 16px 22px 44px}
-    .paper::before{left:32px}
-    .paper .ttl{font-size:26px}.paper .ln{font-size:22px}
-    .arrow{left:186px;width:56px;height:56px}.arrow .ms{font-size:30px}
-    .acesso-grid{grid-template-columns:1fr 1fr;gap:48px}
-    .acesso-copy h2{font-size:34px}
-    .acesso-copy p{font-size:16.5px;margin-bottom:22px}
+  .pular:focus { left: 12px; }
+
+  /* ---------- cabeçalho: celular primeiro (Figma 299:161) ----------
+     O cabeçalho é estático: rola com a página (dele, validado com o designer em 21/11/2026).
+     Quem já rolou volta pelos dois botões flutuantes: o de voltar ao topo e o do WhatsApp. */
+  .topo {
+    position: relative; z-index: 30;
+    padding: 16px 20px 0;
+  }
+  .barra {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    background: var(--tinta);
+    border-radius: 999px;
+    padding: 8px 8px 8px 20px;
+  }
+
+  /* o logo: o ícone do app + "suavan" (§1.1: as medidas acompanham o tamanho da letra) */
+  .logo {
+    display: inline-flex; align-items: center; gap: 5.76px;
+    text-decoration: none; border-radius: 10px;
+  }
+  .logo-icone { width: 25.92px; height: 25.92px; border-radius: 7.2px; object-fit: cover; flex: none; }
+  .logo-palavra {
+    font-family: var(--display); font-size: 23.04px; letter-spacing: 0.02em; line-height: normal;
+    color: var(--branco); white-space: nowrap;
+  }
+  .logo-palavra span { color: var(--amarelo-destaque); }
+
+  /* os links do menu: só no computador */
+  .links { display: none; }
+
+  /* a chave "Para motoristas / Para famílias" */
+  .chave {
+    display: flex; gap: 4px; padding: 4px;
+    border: 1px solid var(--ambar-borda); border-radius: 999px;
+  }
+  .chave a {
+    padding: 12px 20px; border-radius: 999px;
+    font: 600 15px/normal var(--texto); color: var(--branco);
+    text-decoration: none; white-space: nowrap;
+  }
+  .chave a[aria-current="page"] { background: var(--amarelo); color: var(--tinta); }
+  .chave a:not([aria-current]):hover { background: rgba(255, 255, 255, 0.08); }
+  .chave-barra { display: none; }
+  .chave-linha {
+    margin: 12px 20px 0;
+    background: var(--tinta);
+  }
+  .chave-linha a {
+    flex: 1 1 0; min-width: 0; text-align: center;
+    /* em 320 a 359, o respiro dos lados encolhe para "Para motoristas" caber */
+    padding-inline: clamp(8px, 4vw, 20px);
+  }
+
+  /* o botão ≡ e o X: o círculo amarelo de 44 */
+  .menu-botao, .menu-fechar {
+    position: relative; flex: none;
+    width: 44px; height: 44px; border: 0; border-radius: 22px;
+    background: var(--amarelo); cursor: pointer; padding: 0;
+  }
+  .menu-botao:hover, .menu-fechar:hover { background: var(--ambar-borda); }
+  .menu-botao span {
+    position: absolute; left: 13px; width: 18px; height: 2.5px; border-radius: 1.25px;
+    background: var(--tinta);
+  }
+  .menu-botao span:nth-child(1) { top: 14.25px; }
+  .menu-botao span:nth-child(2) { top: 20.25px; }
+  .menu-botao span:nth-child(3) { top: 26.25px; }
+  .menu-fechar span {
+    position: absolute; left: 12px; top: 20.75px; width: 20px; height: 2.5px; border-radius: 2px;
+    background: var(--tinta);
+  }
+  .menu-fechar span:nth-child(1) { transform: rotate(45deg); }
+  .menu-fechar span:nth-child(2) { transform: rotate(-45deg); }
+
+  /* ---------- o menu aberto no celular (Figma 319:334) ---------- */
+  .menu-celular {
+    position: fixed; inset: 0; z-index: 50;
+    display: flex; flex-direction: column;
+    background: var(--amarelo);
+    padding: 16px 20px 40px;
+    overflow-y: auto; overscroll-behavior: contain;
+  }
+  .menu-celular[hidden] { display: none; }
+  .menu-links {
+    list-style: none; margin: 0; padding: 56px 0 0;
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .menu-links a {
+    display: flex; align-items: center;
+    padding: 12px 16px; border-radius: 16px;
+    font: 400 28px/normal var(--display); color: var(--tinta); text-decoration: none;
+  }
+  .menu-links a:hover { background: var(--tinta); color: var(--amarelo); }
+  .menu-espaco { flex: 1 0 24px; }
+  .menu-contato { display: flex; flex-direction: column; gap: 16px; }
+  .botao, .consent-banner-button {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    min-height: 56px; padding: 16px 28px; border-radius: 28px;
+    font: 600 16px/1.5 var(--texto); text-decoration: none;
+  }
+  .botao img { width: 24px; height: 24px; flex: none; }
+  .botao-whatsapp { background: var(--whatsapp); color: var(--branco); }
+  .botao-whatsapp:hover { background: var(--whatsapp-hover); }
+  .botao-email, .consent-banner-decline { background: var(--branco); color: var(--tinta); }
+
+  /* ---------- tablet: o menu do celular, com a chave sem esticar ---------- */
+  @media (min-width: 600px) {
+    .chave-linha { max-width: 480px; margin: 12px auto 0; }
+  }
+
+  /* ---------- computador: a partir de 1.200 (Figma 114:15) ----------
+     A barra precisa de 1.004 px fixos (bordas, logo, links e chave) e de 64 de margem de cada lado:
+     encosta em 1.132 de tela; com folga de 32 entre os blocos, 1.196. Por isso a troca é em 1.200. */
+  @media (min-width: 1200px) {
+    .topo { padding: 24px 64px 0; }
+    .barra { max-width: 1200px; margin: 0 auto; padding: 12px 12px 12px 28px; }
+    .logo { gap: 8px; }
+    .logo-icone { width: 36px; height: 36px; border-radius: 10px; }
+    .logo-palavra { font-size: 32px; }
+    .links { display: flex; gap: 12px; list-style: none; margin: 0; padding: 0; }
+    .links a {
+      display: block; padding: 8px 12px; border-radius: 12px;
+      font: 500 15px/normal var(--texto); color: var(--branco); text-decoration: none; white-space: nowrap;
+    }
+    .links a:hover { background: var(--amarelo); color: var(--tinta); }
+    .chave-barra { display: flex; }
+    .chave-linha, .menu-botao { display: none; }
+    .menu-celular { display: none !important; }
+  }
+
+  /* ---------- o que vem por aí (Figma 312:270 no celular, 259:94 no computador) ----------
+     No celular: o cabeçalho, a imagem e os cartões. No computador: a imagem à esquerda e o resto à direita.
+     A imagem é a composição do Figma em % da caixa de 560 × 720 (no celular, a mesma, a 350 de largura). */
+  .vemai { padding: 32px 20px; }
+  .vemai-grade {
+    max-width: 640px; margin: 0 auto;
+    display: grid; gap: 32px;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "cabecalho" "imagem" "cartoes";
+  }
+  .vemai-cabecalho { grid-area: cabecalho; }
+  .vemai h2 { margin: 0 0 12px; font: 400 28px/1.2 var(--display); color: var(--tinta); }
+  .vemai-sub { margin: 0; font: 400 16px/1.5 var(--texto); color: var(--texto-auxiliar); }
+  .vemai-imagem { grid-area: imagem; position: relative; justify-self: center; width: min(100%, 350px); aspect-ratio: 560 / 720; }
+  .vemai-imagem img { position: absolute; max-width: none; }
+  .vemai-formas { left: -0.96%; top: 0; width: 100.96%; height: 100%; }
+  .vemai-fundo { left: 3.571%; top: 25.556%; width: 89.286%; height: 69.323%; }
+  .vemai-pessoas { left: 16.964%; top: 1.389%; width: 77.679%; height: 97.222%; object-fit: contain; }
+  .vemai-formas.computador, .vemai-fundo.computador { display: none; }
+  .vemai-cartoes { grid-area: cartoes; list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 16px; }
+  .em-breve { display: flex; align-items: flex-start; gap: 16px; padding: 16px; border-radius: 24px; }
+  .em-breve-icone {
+    flex: none; width: 56px; height: 56px; border-radius: 16px; background: var(--amarelo);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .em-breve-icone img { width: 30px; height: 30px; }
+  .em-breve-texto { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+  /* no celular o selo "Em breve" fica embaixo do título, nos três cartões; no computador, ao lado */
+  .em-breve-titulo { display: flex; flex-direction: column; align-items: flex-start; gap: 8px 12px; }
+  .em-breve h3 { margin: 0; font: 400 20px/1.25 var(--display); color: var(--tinta); }
+  .selo-em-breve {
+    padding: 4px 12px; border-radius: 999px; background: var(--tinta); color: var(--branco);
+    font: 400 12px/normal var(--display); letter-spacing: 0.04em; text-transform: uppercase; white-space: nowrap;
+  }
+  .em-breve p { margin: 0; font: 400 16px/1.5 var(--texto); color: var(--texto-auxiliar); }
+
+  /* ---------- a chegada (Figma 318:318 no celular, 275:142 no computador) ---------- */
+  .chegada { padding: 32px 20px; }
+  .chegada-conteudo { position: relative; max-width: 640px; margin: 0 auto; }
+  .chegada-painel {
+    background: var(--amarelo); border-radius: 40px 88px 44px 24px;
+    padding: 32px 24px;
+    display: grid; gap: 20px; grid-template-areas: "titulo" "imagem" "sub" "selo";
+  }
+  .chegada h2 { grid-area: titulo; margin: 0; font: 400 28px/1.18 var(--display); letter-spacing: -0.02em; color: var(--tinta); }
+  .chegada-imagem { grid-area: imagem; margin: 0; display: flex; align-items: center; justify-content: center; aspect-ratio: 302 / 180.915; border-radius: 10px; overflow: hidden; }
+  .chegada-imagem img { width: 97.8%; height: auto; }
+  .chegada-sub { grid-area: sub; margin: 0; font: 400 16px/1.5 var(--texto); color: var(--tinta); }
+  .chegada .selo-play { grid-area: selo; }
+  /* as formas soltas, presas aos cantos do painel amarelo, como no Figma */
+  .chegada-conteudo > img { position: absolute; pointer-events: none; max-width: none; }
+  .chegada-formas-esquerda { left: -17.5px; bottom: -24.5px; width: 36px; height: auto; }
+  .chegada-formas-direita { right: 4.4px; top: -11.8px; width: 35.3px; height: auto; }
+  .chegada-formas-esquerda.computador, .chegada-formas-direita.computador { display: none; }
+
+  @media (min-width: 1200px) {
+    .vemai { padding: 48px 64px 40px; }
+    .vemai-grade {
+      max-width: 1200px;
+      grid-template-columns: minmax(0, 560fr) minmax(0, 576fr);
+      grid-template-rows: 1fr auto auto 1fr;
+      grid-template-areas: "imagem ." "imagem cabecalho" "imagem cartoes" "imagem .";
+      column-gap: 64px; row-gap: 32px;
+    }
+    .vemai h2 { font-size: 36px; }
+    .vemai-sub { font-size: 18px; }
+    .vemai-imagem { width: 100%; }
+    .vemai-formas.celular, .vemai-fundo.celular { display: none; }
+    .vemai-formas.computador, .vemai-fundo.computador { display: block; }
+    .vemai-formas.computador { left: -4.59%; width: 104.59%; }
+    .em-breve { align-items: center; gap: 20px; padding: 20px 24px; }
+    .em-breve-titulo { flex-direction: row; align-items: center; }
+
+    .chegada { padding: 80px 64px 56px; }
+    .chegada-conteudo { max-width: 1200px; }
+    .chegada-painel {
+      /* no Figma o painel tem 400 de altura e o texto (262) fica no meio: o respiro de cima e de baixo se ajusta */
+      width: 62.33%; min-height: 400px; padding: 32px 80px;
+      border-radius: 64px 161px 73px 36px;
+      align-content: center; gap: 24px; grid-template-areas: "titulo" "sub" "selo";
+    }
+    /* o texto vai até 520 (1.440) e, em telas menores, para antes da van (a van começa a 75,4% do painel) */
+    .chegada h2 { font-size: 42px; max-width: min(520px, calc(75.4% + 76.6px)); }
+    .chegada-sub { font-size: 19px; max-width: min(520px, calc(75.4% + 76.6px)); }
+    /* a van sai do painel para a direita: 636 × 381 a 564 da esquerda, em % da largura de 1.200 */
+    .chegada-imagem { position: absolute; left: 47%; top: 18px; width: 53%; aspect-ratio: 636 / 381; border-radius: 21.19px; }
+    .chegada .selo-play img { height: 56px; }
+    .chegada-formas-esquerda.celular, .chegada-formas-direita.celular { display: none; }
+    .chegada-formas-esquerda.computador { display: block; left: -37.3px; bottom: -27px; width: 49.5px; }
+    .chegada-formas-direita.computador { display: block; right: 4.5px; top: 1px; width: 48.6px; }
+  }
+
+  /* ---------- os botões flutuantes (Figma 318:374 no celular, 295:169 no computador) ----------
+     O de voltar ao topo e o do WhatsApp, sempre à vista, porque o cabeçalho não acompanha a rolagem. */
+  .flutuantes {
+    position: fixed; right: 16px; bottom: 24px; z-index: 40;
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+  }
+  .flutuante {
+    display: flex; align-items: center; justify-content: center;
+    width: 56px; height: 56px; border: 2px solid var(--branco); border-radius: 28px;
+    filter: drop-shadow(0 6px 9px rgba(18, 23, 38, 0.16));
+  }
+  .flutuante-topo { background: var(--amarelo); }
+  .flutuante-topo:hover { background: var(--ambar-borda); }
+  /* o ícone do Figma vem em branco; no desenho ele é tinta: a cor vem do CSS, e a forma, do arquivo */
+  .flutuante-topo span {
+    width: 24px; height: 24px; background: var(--tinta);
+    -webkit-mask: url(img/icone-voltar-topo.svg) center / 24px 24px no-repeat;
+    mask: url(img/icone-voltar-topo.svg) center / 24px 24px no-repeat;
+  }
+  .flutuante-whatsapp { background: var(--whatsapp); }
+  .flutuante-whatsapp:hover { background: var(--whatsapp-hover); }
+  .flutuante-whatsapp img { width: 30px; height: 30px; }
+  @media (min-width: 1200px) { .flutuantes { right: 32px; bottom: 32px; } }
+
+  /* ---------- as seções ---------- */
+  main { overflow-x: clip; }
+  main section { scroll-margin-top: var(--topo-ancora); }
+  .so-leitor {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  .destaque { color: var(--amarelo-destaque); }
+
+  /* ---------- hero: celular primeiro (Figma 299:175) ----------
+     No celular a ordem é chapéu, título, imagem, selo e subtítulo; no computador, o texto à esquerda e a imagem à direita. */
+  .hero { padding: 32px 20px 24px; }
+  .hero-painel {
+    display: grid; gap: 20px;
+    grid-template-areas: "chapeu" "titulo" "imagem" "selo" "sub";
+    max-width: 640px; margin: 0 auto;
+  }
+  .chapeu {
+    grid-area: chapeu; margin: 0;
+    display: flex; justify-content: center;
+    padding: 8px 12px; border: 1px solid rgba(17, 24, 39, 0.4); border-radius: 999px;
+    font: 700 11.5px/normal var(--texto); letter-spacing: 0.04em; text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .hero h1 {
+    grid-area: titulo; margin: 0;
+    font: 400 28px/1.18 var(--display); letter-spacing: -0.02em; color: var(--tinta);
+  }
+  /* o corte da imagem é o do Figma: no celular ela passa um pouco da caixa à esquerda e em cima */
+  .hero-imagem { grid-area: imagem; position: relative; margin: 0; aspect-ratio: 350 / 285; overflow: hidden; }
+  .hero-imagem img { position: absolute; max-width: none; width: 105.42%; height: 105.01%; left: -5.42%; top: -2.19%; }
+  .selo-play { grid-area: selo; justify-self: start; display: block; border-radius: 8px; }
+  .selo-play img { height: 48px; width: auto; }
+  .hero-sub { grid-area: sub; margin: 0; font: 400 16px/1.5 var(--texto); color: var(--texto-auxiliar); }
+
+  /* ---------- vantagens: os três cartões (Figma 302:168 no celular, 153:16 no computador) ---------- */
+  .vantagens { padding: 40px 20px 32px; }
+  .vantagens-cartoes {
+    position: relative;
+    display: flex; flex-direction: column;
+    max-width: 640px; margin: 0 auto;
+    padding: 12px 4px;
+    background: var(--amarelo);
+    border-radius: 48px 20px 56px 16px;
+  }
+  .vantagens-cartoes > img { position: absolute; pointer-events: none; max-width: none; }
+  .vantagens-faixa, .vantagens-formas { display: none; }
+  /* as formas soltas do celular: o desenho do Figma, preso ao canto de cima do cartão amarelo */
+  .vantagens-formas-celular { top: -21.5px; left: -20px; width: calc(100% + 40px); height: auto; }
+  .cartao-beneficio { position: relative; padding: 24px; }
+  .cartao-beneficio h3 { margin: 0 0 16px; font: 400 20px/1.25 var(--display); letter-spacing: -0.02em; }
+  .cartao-beneficio p { margin: 0; font: 400 16px/1.5 var(--texto); }
+
+  /* ---------- o que você encontra no app: os 9 recursos (Figma 303:180 no celular, 182:60 no computador) ----------
+     Cada imagem é a composição do Figma: o objeto 3D e o celular, cada um recortado numa caixa.
+     A composição tem as medidas do computador (330 ou 430 × 250) e, no celular, a escala do Figma (0,9115). */
+  .recursos { padding: 32px 20px; }
+  .recursos-titulo { max-width: 640px; margin: 0 auto 32px; font: 400 28px/1.2 var(--display); color: var(--tinta); }
+  .recursos-lista {
+    list-style: none; margin: 0 auto; padding: 0; max-width: 640px;
+    display: grid; grid-template-columns: minmax(0, 1fr); gap: 40px;
+  }
+  .recurso { display: flex; flex-direction: column; gap: 18.23px; text-align: center; }
+  .recurso-texto { display: flex; flex-direction: column; gap: 14.58px; }
+  .recurso h3 { margin: 0; font: 400 20px/1.25 var(--display); color: var(--tinta); }
+  .recurso p { margin: 0; font: 400 16px/1.5 var(--texto); color: var(--texto-auxiliar); }
+  .recurso-imagem { position: relative; height: 218.75px; }
+  .composicao {
+    position: absolute; left: 50%; top: 50%;
+    width: 330px; height: 250px;
+    transform: translate(-50%, -50%) scale(var(--escala, 0.9115));
+  }
+  .composicao.celular-esquerda { width: 430px; }
+  .composicao > div { position: absolute; overflow: hidden; }
+  .caixa-objeto { left: 0; top: 25px; width: 200px; height: 200px; }
+  .celular-esquerda .caixa-objeto { left: 30px; width: 400px; }
+  .caixa-celular { left: 80px; top: 0; width: 250px; height: 250px; }
+  .celular-esquerda .caixa-celular { left: 0; }
+  .composicao img { position: absolute; max-width: none; left: var(--x); top: var(--y, 0); width: var(--w); height: var(--h); }
+
+  @media (min-width: 840px) {
+    .recursos-titulo, .recursos-lista { max-width: 840px; }
+    .recursos-lista { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px; }
+  }
+
+  @media (min-width: 600px) {
+    .hero h1 { font-size: 34px; }
+    .hero-sub { font-size: 18px; }
+    .vantagens-formas-celular { display: none; }
+  }
+
+  @media (min-width: 1200px) {
+    /* hero (Figma 116:11): o texto em 632 e a imagem em 488, que encosta na borda direita do painel */
+    .hero { padding: 40px 64px 0; }
+    .hero-painel {
+      max-width: 1200px;
+      padding: 88px 0 88px 80px;
+      grid-template-columns: minmax(0, 632fr) minmax(0, 488fr);
+      grid-template-rows: auto auto auto 1fr;
+      grid-template-areas: "chapeu imagem" "titulo imagem" "sub imagem" "selo imagem";
+      column-gap: 0; row-gap: 24px; align-items: start;
+    }
+    .chapeu { justify-self: start; padding: 8px 16px; font-size: 12px; letter-spacing: 0.1em; }
+    .hero h1 { font-size: 42px; }
+    .hero-sub { font-size: 19px; }
+    .selo-play { margin-top: 8px; }
+    .selo-play img { height: 60px; }
+    .hero-imagem { aspect-ratio: 488 / 419; }
+    .hero-imagem img { width: 100%; height: 99.43%; left: 0; top: 0.58%; }
+
+    /* vantagens: os três cartões lado a lado, sobre a faixa amarela do Figma */
+    .vantagens { padding: 72px 64px 32px; }
+    .vantagens-cartoes {
+      max-width: 1200px;
+      display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px;
+      padding: 0; background: none; border-radius: 0;
+    }
+    .vantagens-faixa {
+      display: block; top: -40px; left: 50%; transform: translateX(calc(-50% + 1.12px));
+      width: 105.52%; height: 287.14px;
+    }
+    /* as formas acompanham a largura da faixa; a margem em % segue a largura, como a da faixa */
+    .vantagens-formas {
+      display: block; top: 0; left: 50%; transform: translateX(-50%);
+      width: 120%; height: auto; margin-top: -6.425%;
+    }
+    .cartao-beneficio { padding: 32px 32px 36px; }
+    .cartao-beneficio h3 { font-size: 22px; }
+
+    /* recursos: três por linha, o texto à esquerda, a composição no tamanho do Figma */
+    .recursos { padding: 136px 64px 56px; }
+    .recursos-titulo { max-width: 1200px; margin-bottom: 40px; font-size: 36px; }
+    .recursos-lista { max-width: 1200px; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 56px 24px; }
+    .recurso { gap: 20px; text-align: left; }
+    .recurso-texto { gap: 16px; }
+    .recurso-imagem { height: 240px; }
+    .composicao { --escala: 1; }
+  }
+
+  /* ---------- precisa de ajuda (Figma 480:368 no celular, 480:183 no computador) ---------- */
+  .ajuda { padding: 32px 20px; }
+  .ajuda-conteudo { position: relative; max-width: 640px; margin: 0 auto; }
+  .ajuda-barra {
+    background: var(--tinta); border-radius: 24px 56px 20px 40px;
+    padding: 28px 24px; display: flex; flex-direction: column; gap: 32px;
+  }
+  .ajuda h2 { margin: 0 0 4px; font: 400 20px/1.2 var(--display); color: var(--amarelo); }
+  .ajuda-texto p { margin: 0; font: 400 16px/1.5 var(--texto); color: var(--branco); }
+  .ajuda-botoes { display: flex; flex-direction: column; gap: 16px; }
+  .botao-email-amarelo, .consent-banner-accept { background: var(--amarelo); color: var(--tinta); }
+  .botao-email-amarelo:hover, .consent-banner-accept:hover { background: var(--ambar-borda); }
+  .ajuda-conteudo > img { position: absolute; pointer-events: none; max-width: none; height: auto; }
+  .ajuda-formas-esquerda { left: -15px; bottom: -17.3px; width: 34.24px; }
+  .ajuda-formas-direita { right: -8.3px; top: -14.9px; width: 34.36px; }
+  .ajuda-formas-esquerda.computador, .ajuda-formas-direita.computador { display: none; }
+
+  /* ---------- tire suas dúvidas (Figma 313:270 no celular, 269:115 no computador) ----------
+     O acordeão é o <details> do navegador: abre e fecha no toque, sem script, e o leitor de tela entende.
+     Cada dúvida tem a sua forma de cantos (as 6 formas do componente "Dúvida"). */
+  .duvidas { padding: 32px 20px 64px; }
+  .duvidas-conteudo { max-width: 640px; margin: 0 auto; }
+  .duvidas h2 { margin: 0 0 12px; font: 400 28px/1.2 var(--display); color: var(--tinta); }
+  .duvidas-sub { margin: 0 0 32px; font: 400 16px/1.5 var(--texto); color: var(--texto-auxiliar); }
+  .duvidas-lista { display: flex; flex-direction: column; gap: 16px; }
+  .duvida { background: var(--amarelo); border-radius: 44px 20px 52px 16px; }
+  .duvida:nth-child(2) { border-radius: 20px 48px 24px 56px; }
+  .duvida:nth-child(3) { border-radius: 52px 16px 40px 24px; }
+  .duvida:nth-child(4) { border-radius: 24px 40px 16px 48px; }
+  .duvida:nth-child(5) { border-radius: 40px 24px 56px 20px; }
+  .duvida:nth-child(6) { border-radius: 16px 52px 24px 40px; }
+  .duvida summary {
+    list-style: none; cursor: pointer;
+    display: flex; align-items: center; gap: 12px; padding: 20px 16px;
+    border-radius: inherit;
+  }
+  .duvida summary::-webkit-details-marker { display: none; }
+  .duvida-numero {
+    flex: none; min-width: 48px; text-align: center;
+    padding: 8px 14px; border: 1.5px solid var(--tinta); border-radius: 999px;
+    font: 600 14px/normal var(--texto); color: var(--tinta);
+  }
+  .duvida-pergunta { flex: 1; min-width: 0; font: 400 18px/1.25 var(--display); color: var(--tinta); }
+  .duvida-icone {
+    flex: none; width: 48px; height: 48px; border-radius: 24px;
+    background: var(--tinta) url(img/icone-seta-baixo.svg) center / 24px 24px no-repeat;
+  }
+  /* a resposta fica embaixo da pergunta, alinhada com ela: o número (48) e o ícone (48) mais os vãos */
+  .duvida-resposta { margin: 0; padding: 0 76px 32px; font: 400 16px/1.5 var(--texto); color: rgba(255, 255, 255, 0.85); }
+  .duvida[open] { background: var(--tinta); }
+  .duvida[open] summary { align-items: flex-start; padding-top: 32px; padding-bottom: 12px; }
+  .duvida[open] .duvida-numero { background: var(--amarelo); border-color: var(--amarelo); }
+  .duvida[open] .duvida-pergunta { padding-top: 4px; color: var(--branco); }
+  .duvida[open] .duvida-icone { background: var(--amarelo) url(img/icone-seta-cima.svg) center / 24px 24px no-repeat; }
+
+  /* ---------- rodapé (Figma 318:350 no celular, 287:160 no computador) ---------- */
+  .rodape { position: relative; z-index: 1; background: var(--tinta); color: var(--branco); border-radius: 32px 16px 0 0; padding: 40px 20px 32px; }
+  .rodape-conteudo { max-width: 640px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; }
+  .rodape-principal { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
+  .rodape .logo { gap: 8px; }
+  .rodape .logo-icone { width: 36px; height: 36px; border-radius: 10px; }
+  .rodape .logo-palavra { font-size: 32px; }
+  /* O logo e as redes lado a lado (dele, 21/11: "coloque o ícone das redes ao lado do suavan").
+     No celular estreito, as redes descem para baixo do logo. Os ícones têm 24px, como no Figma (531:745);
+     a área de toque vai a 40px sem mexer no desenho. */
+  .rodape-marca { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; }
+  .rodape-redes { display: flex; align-items: center; gap: 20px; }
+  .rodape-redes a { position: relative; display: block; }
+  .rodape-redes a::before { content: ""; position: absolute; inset: -8px; }
+  .rodape-redes a[hidden] { display: none; } /* rede sem página ainda (o Facebook) */
+  .rodape-redes img { display: block; }
+  .rodape-links { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+  .rodape-links a { font: 500 15px/1.5 var(--texto); color: var(--branco); text-decoration: none; white-space: nowrap; }
+  .rodape-links a:hover { color: var(--amarelo); }
+  .rodape-divisor { height: 1px; margin: 0; border: 0; background: var(--branco); }
+  .rodape-legal { display: flex; flex-direction: column; gap: 16px; font: 400 14px/1.5 var(--texto); }
+  .rodape-legal p { margin: 0; }
+  .rodape-contato { display: flex; flex-direction: column; gap: 8px; font-weight: 500; }
+  .rodape-contato a { color: inherit; text-decoration: none; }
+  .rodape-contato a:hover { color: var(--amarelo); }
+  /* a linha de direitos, quando não cabe, quebra entre as duas frases */
+  .rodape-direitos > span { display: inline-block; }
+
+  /* No fim da página, os botões flutuantes ficam sobre o canto direito do rodapé.
+     Onde a margem não basta para eles (celular até 799px e computador de 1.200 a 1.409px),
+     o rodapé deixa essa faixa livre, para nenhum texto ficar escondido embaixo deles.
+     O ",98" evita um buraco entre as regras quando a largura é fracionada (zoom do navegador).
+     A regra do computador vem depois do bloco de 1.200px, mais abaixo. */
+  @media (max-width: 799.98px) { .rodape-legal { padding-right: 60px; } }
+
+  /* ---------- as formas amarelas do fundo, só no computador (Figma 150:10) ----------
+     Cada forma é a caixa do Figma (o contorno da forma já girada), com a forma girada no meio.
+     Cada uma mora na sua seção, com o topo medido a partir dela: assim acompanha a seção em qualquer largura. */
+  .forma { display: none; }
+
+  @media (min-width: 1200px) {
+    .ajuda { padding: 64px 64px 56px; }
+    .ajuda-conteudo { max-width: 1200px; }
+    .ajuda-barra {
+      flex-direction: row; align-items: center; justify-content: space-between;
+      min-height: 136px; padding: 32px 80px; border-radius: 32px 72px 24px 56px;
+    }
+    .ajuda h2 { font-size: 24px; }
+    .ajuda-texto p { font-size: 18px; }
+    .ajuda-botoes { flex-direction: row; }
+    .ajuda-formas-esquerda.celular, .ajuda-formas-direita.celular { display: none; }
+    .ajuda-formas-esquerda.computador { display: block; left: -34.4px; bottom: -27.9px; width: 47.49px; }
+    .ajuda-formas-direita.computador { display: block; right: -16.1px; top: -23px; width: 47.62px; }
+
+    .duvidas { padding: 64px 64px 124px; }
+    .duvidas-conteudo { max-width: 1200px; }
+    .duvidas h2 { font-size: 36px; }
+    .duvidas-sub { font-size: 18px; margin-bottom: 40px; }
+    .duvida summary { gap: 24px; padding: 20px 24px; }
+    .duvida-pergunta { font-size: 22px; }
+    .duvida-resposta { padding: 0 96px 32px; font-size: 17px; }
+
+    .rodape { border-radius: 48px 24px 0 0; padding: 56px 64px 40px; }
+    .rodape-conteudo { max-width: 1200px; gap: 32px; }
+    .rodape-principal { flex-direction: row; align-items: center; justify-content: space-between; }
+    .rodape-marca { column-gap: 32px; }
+    .rodape-redes { gap: 16px; }
+    .rodape-links { flex-direction: row; gap: 32px; }
+    /* no computador o © fica à esquerda e o contato à direita (no celular, o contato vem antes) */
+    .rodape-legal { flex-direction: row-reverse; align-items: center; justify-content: space-between; }
+    .rodape-contato { flex-direction: row; gap: 24px; }
+
+    main { position: relative; z-index: 1; }
+    .hero, .recursos, .chegada, .duvidas { position: relative; }
+    .forma {
+      display: flex; position: absolute; z-index: -1; pointer-events: none;
+      align-items: center; justify-content: center;
+    }
+    .forma > * { flex: none; max-width: none; }
+    /* os topos vêm do Figma de 1.440 (a página inteira) menos o topo da seção onde cada forma mora */
+    .forma-organica-direita { right: -175.91px; top: -350px; width: 471.58px; height: 454.56px; }
+    .forma-organica-direita img { width: 420px; height: 400px; transform: rotate(8deg); }
+    .forma-icone-esquerda { left: -296.53px; top: 230px; width: 379.54px; height: 379.54px; }
+    .forma-icone-esquerda span { width: 320px; height: 320px; border-radius: 84px; background: var(--amarelo); transform: rotate(12deg); }
+    .forma-modulo3-direita { right: -237.18px; top: 206px; width: 298.18px; height: 437.34px; }
+    .forma-modulo3-direita span { width: 230px; height: 402.77px; border-radius: 96px 40px 96px 36px; background: var(--amarelo); transform: rotate(-10.28deg); }
+    .forma-modulo3-esquerda { left: -320px; top: 793px; width: 425.87px; height: 588.99px; }
+    .forma-modulo3-esquerda img { width: 305.44px; height: 530.39px; transform: rotate(14.16deg); }
+    .forma-chegada-esquerda { left: -241.41px; top: -128.04px; width: 328.6px; height: 659.28px; }
+    .forma-chegada-esquerda span { width: 220px; height: 630.2px; border-radius: 40px 88px 32px 96px; background: var(--amarelo); transform: rotate(10.25deg); }
+    .forma-duvidas-direita { right: -578.99px; top: 195.34px; width: 675.98px; height: 830.32px; }
+    .forma-duvidas-direita img { width: 660.66px; height: 817.99px; transform: rotate(1.08deg); }
+  }
+  /* a faixa livre dos botões flutuantes no rodapé do computador (ver a nota do rodapé, acima).
+     Sem a barra de rolagem, ela basta até 1.391px; o limite vai a 1.409px porque, no Windows,
+     a barra (de 15 a 17px) conta na largura da regra, mas não na da página. */
+  @media (min-width: 1200px) and (max-width: 1409.98px) { .rodape { padding-right: 96px; } }
+
+  /* ---------- o aviso do Clarity (o consent.js monta; o visual é este) ----------
+     Com data-banner-style="page" no <script>, o consent.js não põe o estilo dele e marca as peças
+     com as classes consent-banner-*. É o cartão escuro da ajuda, com os botões da página (as classes
+     dos botões entram no .botao, lá em cima): "Recusar" branco e "Aceitar" amarelo, do mesmo tamanho,
+     para recusar ser tão fácil quanto aceitar. Fica sobre os botões flutuantes (40) e embaixo do menu aberto (50). */
+  .consent-banner {
+    position: fixed; left: 16px; right: 16px; bottom: 16px; z-index: 45;
+    max-width: 640px; margin: 0 auto; padding: 24px;
+    background: var(--tinta); color: var(--branco);
+    border-radius: 24px 56px 20px 40px;
+    box-shadow: 0 8px 32px rgba(17, 24, 39, 0.24);
+  }
+  .consent-banner-inner { display: flex; flex-direction: column; gap: 20px; }
+  .consent-banner-text { font: 400 15px/1.5 var(--texto); }
+  .consent-banner-text strong { font-weight: 600; }
+  .consent-banner-link { color: var(--amarelo); }
+  /* a grade com colunas 1fr deixa os dois botões sempre com a mesma largura (a do maior) */
+  .consent-banner-actions { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 12px; }
+  .consent-banner-button { padding-inline: 16px; border: 0; cursor: pointer; }
+  @media (min-width: 1200px) {
+    .consent-banner { bottom: 32px; max-width: 880px; padding: 24px 32px; border-radius: 32px 72px 24px 56px; }
+    .consent-banner-inner { flex-direction: row; align-items: center; gap: 32px; }
+    .consent-banner-text { flex: 1; font-size: 16px; }
+    .consent-banner-button { padding-inline: 28px; }
   }
 </style>
 </head>
-<body id="topo">
-<a class="skip" href="#main">Pular para o conteúdo</a>
+<body>
+<a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
-<header class="top">
-  <div class="wrap nav">
-    <!-- Nas sub-páginas o wordmark leva à página principal. -->
-    <a class="home" href="#topo" aria-label="Início — voltar ao topo"><span class="wordmark">SUAVAN</span></a>
-    <nav class="nav-links" id="nav-links" aria-label="Seções">
-      <a href="#como">Como funciona</a>
-      <a href="#app">O app</a>
-      <a href="#compromissos">Compromissos</a>
-      <a href="#duvidas">Dúvidas</a>
-    </nav>
-    <a class="btn btn-primary cta js-play" href="https://play.google.com/store/apps/details?id=io.suavan.motorista">Baixar o app</a>
-    <button type="button" class="menu" aria-label="Abrir o menu" aria-expanded="false" aria-controls="nav-links"><span class="ms" aria-hidden="true">menu</span></button>
-  </div>
+<header class="topo" id="topo">
+  <nav class="barra" aria-label="Principal">
+    <a class="logo" href="#topo" aria-label="Suavan, voltar ao topo">
+      <img class="logo-icone" src="img/icone-app.jpg" width="36" height="36" alt="">
+      <span class="logo-palavra" aria-hidden="true">sua<span>van</span></span>
+    </a>
+    <ul class="links">
+      <li><a href="#vantagens">Vantagens</a></li>
+      <li><a href="#o-app">O app</a></li>
+      <li><a href="#novidades">Novidades</a></li>
+      <li><a href="#duvidas">Dúvidas</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <div class="chave chave-barra" role="group" aria-label="Escolher a página">
+      <a href="./" aria-current="page">Para motoristas</a>
+      <a class="js-familias" href="https://suavan.com.br/">Para famílias</a>
+    </div>
+    <button class="menu-botao" type="button" aria-label="Abrir o menu" aria-expanded="false" aria-controls="menu-celular">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 </header>
 
-<main id="main">
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <span class="eyebrow"><span class="ms" aria-hidden="true">directions_bus</span> Suavan, o amigo do motorista</span>
-      <h1>Papel e caneta não avisam quem está em atraso. <span class="hl">O Suavan avisa.</span></h1>
-      <p class="lead">Marque quem pagou, inclusive quando o pai paga só metade. Veja quem está em atraso. Mande a cobrança pronta — o dinheiro cai direto na sua conta sem burocracia.</p>
-      <div class="hero-ctas">
-        <a class="play-badge js-play" href="https://play.google.com/store/apps/details?id=io.suavan.motorista"><img src="img/GetItOnGooglePlay_Badge_Web_color_Portuguese-Brazil.svg" alt="Disponível no Google Play" width="189" height="56"></a>
-        <a class="link out" href="https://pais.suavan.com.br">Sou pai ou mãe <span class="ms" aria-hidden="true">arrow_forward</span></a>
-      </div>
-    </div>
+<div class="chave chave-linha" role="group" aria-label="Escolher a página">
+  <a href="./" aria-current="page">Para motoristas</a>
+  <a class="js-familias" href="https://suavan.com.br/">Para famílias</a>
+</div>
 
-    <div class="hero-visual">
-      <div class="signature" role="img" aria-label="Do caderno para o app: a lista de agosto no papel, com quem pagou e quem deve, vira a tela Início do Suavan">
-        <div class="paper" aria-hidden="true">
-          <div class="ttl">Agosto</div>
-          <div class="ln ok">Helena — pagou ✓</div>
-          <div class="ln due mark">Joaquim — deve 300</div>
-          <div class="ln due">Kaio — deve 250</div>
-          <div class="ln ok">Kawan — pagou ✓</div>
-          <div class="ln scratch">Kleber — deve 180</div>
-          <div class="ln due">Marcio — deve 200</div>
-          <div class="ln">Maria Rita — ??</div>
-        </div>
-        <div class="arrow" aria-hidden="true"><span class="ms">arrow_forward</span></div>
-        <div class="phone">
-          <img src="img/app-inicio.png" srcset="img/app-inicio-360.png 360w, img/app-inicio.png 600w" sizes="(min-width:980px) 250px, (min-width:600px) 212px, 166px" width="600" height="1265" alt="Tela Início do app Suavan: meta do mês com R$ 1.140,00 recebidos de R$ 1.890,00 e a lista de alunos em aberto no mês, com vencimento e valor" fetchpriority="high" decoding="async">
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-proof">
-      <div class="trust">
-        <span><span class="ms" aria-hidden="true">check_circle</span> Hoje é grátis, sem limite de alunos</span>
-        <span><span class="ms" aria-hidden="true">check_circle</span> Cobrança pelo seu Pix</span>
-        <span><span class="ms" aria-hidden="true">check_circle</span> Feito para van escolar</span>
-        <span><span class="ms" aria-hidden="true">check_circle</span> Para celular Android</span>
-      </div>
-      <p class="note">Seus dados ficam protegidos, e o dinheiro da cobrança vai para a sua conta, não para a nossa.</p>
-    </div>
+<div class="menu-celular" id="menu-celular" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="barra">
+    <a class="logo" href="#topo" aria-label="Suavan, voltar ao topo">
+      <img class="logo-icone" src="img/icone-app.jpg" width="36" height="36" alt="">
+      <span class="logo-palavra" aria-hidden="true">sua<span>van</span></span>
+    </a>
+    <button class="menu-fechar" type="button" aria-label="Fechar o menu"><span></span><span></span></button>
   </div>
-</section>
-
-<div class="band">
-  <div class="wrap inner">
-    <div class="ic"><span class="ms" aria-hidden="true">edit_note</span></div>
-    <div>
-      <h2>Saia do papel e caneta. A sua van sob controle, no seu celular.</h2>
-      <p>Seus alunos, as escolas, quem pagou e quem está em atraso — do jeito que você já anota, sem perder nada. E na hora de cobrar, o texto já sai pronto.</p>
-    </div>
+  <ul class="menu-links">
+    <li><a href="#vantagens">Vantagens</a></li>
+    <li><a href="#o-app">O app</a></li>
+    <li><a href="#novidades">Novidades</a></li>
+    <li><a href="#duvidas">Dúvidas</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <div class="menu-espaco"></div>
+  <div class="menu-contato">
+    <a class="botao botao-whatsapp js-whats" href="/whatsapp/" target="_blank" rel="noopener"><img src="img/icone-whatsapp.svg" width="24" height="24" alt="">WhatsApp</a>
+    <a class="botao botao-email js-email" href="mailto:suporte@suavan.com.br"><img src="img/icone-email.svg" width="24" height="24" alt="">Email</a>
   </div>
 </div>
 
-<section id="como">
-  <div class="wrap">
-    <div class="sec-tag">Como funciona</div>
-    <h2 class="sec-title">Do caderno para o celular, em três passos</h2>
-    <p class="sec-sub">O mesmo controle que você já faz no papel — sem perder a lista, a conta nem a cobrança.</p>
-    <div class="steps">
-      <div class="step"><div class="num" aria-hidden="true">1</div><h3>Você cadastra</h3><p>Seus alunos, as escolas e o turno de cada um. Se preferir, o responsável preenche os dados do aluno por um link que você manda.</p></div>
-      <div class="step"><div class="num" aria-hidden="true">2</div><h3>Você marca quem pagou</h3><p>Inclusive quando o pai paga só metade. Quem está em atraso aparece na hora, sem conta de cabeça.</p></div>
-      <div class="step"><div class="num" aria-hidden="true">3</div><h3>A cobrança sai pronta</h3><p>No WhatsApp, com o valor, o vencimento e a sua chave Pix. O responsável paga direto para você.</p></div>
-    </div>
-  </div>
-</section>
-
-<div class="band">
-  <div class="wrap inner">
-    <div class="ic"><span class="ms" aria-hidden="true">groups</span></div>
-    <div>
-      <h2>Aqui você cadastra quantos alunos quiser. Hoje é grátis.</h2>
-      <p>Sem limite de alunos e sem cartão. Se um dia alguma parte for paga, o Suavan avisa antes, no app e por e-mail, e a cobrança só começa depois que você aceitar os Termos novos.</p>
-    </div>
-  </div>
-</div>
-
-<section id="app" style="background:var(--g50)">
-  <div class="wrap">
-    <div class="sec-tag center">O app, tela por tela</div>
-    <h2 class="sec-title center">É isto que você vai ter no celular</h2>
-    <p class="sec-sub center">Telas reais do app, do jeito que ele está hoje. Sem promessa de recurso que ainda não existe.</p>
-    <div class="screens">
-      <figure class="screen">
-        <div class="frame"><img src="img/app-financeiro.png" srcset="img/app-financeiro-360.png 360w, img/app-financeiro.png 600w" sizes="(min-width:600px) 290px, 246px" width="600" height="1265" alt="Tela Financeiro: total recebido no mês, pendentes e projeção, e a lista de mensalidades com quem pagou e quem está em atraso" loading="lazy" decoding="async"></div>
-        <figcaption><h3>Financeiro</h3><p>Quanto entrou, quanto falta e quem está em atraso — por mês, com o histórico guardado.</p></figcaption>
+<main id="conteudo">
+  <section class="hero" aria-labelledby="hero-titulo">
+    <div class="forma forma-organica-direita" aria-hidden="true"><img src="img/fundo-forma-organica-direita.svg" width="420" height="400" alt=""></div>
+    <div class="forma forma-icone-esquerda" aria-hidden="true"><span></span></div>
+    <div class="hero-painel">
+      <p class="chapeu">O melhor app para van escolar</p>
+      <h1 id="hero-titulo">O app <span class="destaque">grátis</span> que <span class="destaque">facilita o seu dia a dia</span> e ainda traz <span class="destaque">mais alunos</span> para a sua van.</h1>
+      <figure class="hero-imagem">
+        <img src="img/hero-motorista-van.webp" width="2088" height="1786" alt="Motorista de van escolar com o celular na mão, ao lado da van amarela e das crianças.">
       </figure>
-      <figure class="screen">
-        <div class="frame"><img src="img/app-inicio.png" srcset="img/app-inicio-360.png 360w, img/app-inicio.png 600w" sizes="(min-width:600px) 290px, 246px" width="600" height="1265" alt="Tela Início: meta do mês e alunos em aberto, com atalhos para cadastrar passageiro e cobrar" loading="lazy" decoding="async"></div>
-        <figcaption><h3>Início</h3><p>A meta do mês e os alunos em aberto na primeira tela, e a cobrança começa ali mesmo.</p></figcaption>
-      </figure>
+      <a class="selo-play js-play" href="https://play.google.com/store/apps/details?id=io.suavan.motorista&amp;hl=pt_BR">
+        <img src="img/GetItOnGooglePlay_Badge_Web_color_Portuguese-Brazil.svg" width="203" height="60" alt="Disponível no Google Play">
+      </a>
+      <p class="hero-sub">Cadastro de alunos, controle de mensalidades e cobrança em um só lugar. O Suavan indica você às famílias e ajuda a encher a sua van. Sem pagar nada.</p>
     </div>
-    <div class="sec-cta">
-      <a class="btn btn-primary btn-lg js-play" href="https://play.google.com/store/apps/details?id=io.suavan.motorista"><span class="ms" aria-hidden="true">download</span> Baixar o app</a>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="compromissos">
-  <div class="wrap">
-    <div class="sec-tag">Compromissos</div>
-    <h2 class="sec-title">Um app que leva a sério o que você confia a ele</h2>
-    <p class="sec-sub">Quatro compromissos escritos nos Termos de uso e na Política de Privacidade — e cumpridos hoje.</p>
-    <div class="cards">
-      <div class="card">
-        <div class="ic"><span class="ms" aria-hidden="true">lock</span></div>
-        <h3>Dados protegidos, no Brasil</h3>
-        <p>Os dados dos seus alunos ficam criptografados no seu celular e em servidor no Brasil.</p>
-      </div>
-      <div class="card">
-        <div class="ic"><span class="ms" aria-hidden="true">account_balance_wallet</span></div>
-        <h3>O dinheiro é seu, direto na sua conta</h3>
-        <p>A cobrança sai com a sua chave Pix e cai na sua conta. O Suavan não recebe, não intermedeia e não fica com nada.</p>
-      </div>
-      <div class="card">
-        <div class="ic"><span class="ms" aria-hidden="true">toggle_on</span></div>
-        <h3>Você no controle</h3>
-        <p>Quem define o valor e combina com cada família é você. E você pode excluir a sua conta e todos os dados quando quiser, dentro do app.</p>
-      </div>
-      <div class="card">
-        <div class="ic"><span class="ms" aria-hidden="true">support_agent</span></div>
-        <h3>Suporte que responde</h3>
-        <p>Dúvida ou problema? Fale com a gente por <a href="mailto:suporte@suavan.com.br">suporte@suavan.com.br</a> ou pelo WhatsApp. Quem responde é quem faz o app.</p>
-      </div>
+  <section class="vantagens" id="vantagens" aria-labelledby="vantagens-titulo">
+    <h2 class="so-leitor" id="vantagens-titulo">Vantagens</h2>
+    <div class="vantagens-cartoes">
+      <img class="vantagens-faixa" src="img/vantagens-faixa.svg" width="1266" height="287" alt="">
+      <img class="vantagens-formas" src="img/vantagens-formas.svg" width="1440" height="313" alt="">
+      <img class="vantagens-formas-celular" src="img/vantagens-formas-celular.svg" width="390" height="561" alt="">
+      <article class="cartao-beneficio">
+        <h3>Seu dia a dia simples</h3>
+        <p>Cadastre os alunos, veja quem pagou e quem deve e cobre pelo WhatsApp com a mensagem pronta.</p>
+      </article>
+      <article class="cartao-beneficio">
+        <h3>Mais alunos na sua van</h3>
+        <p>O Suavan indica você às famílias das escolas que você atende. O contato chega direto no app.</p>
+      </article>
+      <article class="cartao-beneficio">
+        <h3>Grátis e sem limite</h3>
+        <p>Cadastre quantos alunos quiser, sem limite de passageiros. Não realizamos nenhuma cobrança.</p>
+      </article>
     </div>
-    <p class="legal-links"><a href="/termos/" target="_blank" rel="noopener">Termos de uso</a> <a href="/privacidade/" target="_blank" rel="noopener">Política de Privacidade</a> <a href="https://suavan.com.br/excluir-conta/">Como excluir sua conta</a></p>
-  </div>
-</section>
-
-<section id="acesso">
-  <div class="wrap acesso-grid">
-    <div class="acesso-copy">
-      <div class="sec-tag">Baixar o app</div>
-      <h2>O Suavan está na Google Play.</h2>
-      <p>Instale no Android que você já tem, crie a sua conta e cadastre um aluno para ver se o app serve para você.</p>
-      <ul>
-        <li><span class="ms" aria-hidden="true">check_circle</span> Hoje é grátis, sem limite de alunos e sem cartão.</li>
-        <li><span class="ms" aria-hidden="true">check_circle</span> Para celular Android.</li>
-        <li><span class="ms" aria-hidden="true">check_circle</span> Travou em alguma tela? Fale com quem faz o app, pelo WhatsApp.</li>
+  </section>
+  <!-- As imagens da página são WebP com folga sobre o tamanho em que aparecem: 4,5 vezes a largura no celular e 3 no
+       computador, sem passar do original. Com menos folga, o navegador reamostra quase 1 para 1 e borra a letra miúda
+       dos celulares desenhados. Os originais do Figma (PNG de até 2048 px) ficam no histórico do Git, até o commit 61b77ee. -->
+  <section class="recursos" id="o-app" aria-labelledby="recursos-titulo">
+    <div class="forma forma-modulo3-direita" aria-hidden="true"><span></span></div>
+    <div class="forma forma-modulo3-esquerda" aria-hidden="true"><img src="img/fundo-forma-modulo3-esquerda.svg" width="305" height="530" alt="" loading="lazy"></div>
+    <h2 class="recursos-titulo" id="recursos-titulo">O que você encontra <span class="destaque">no app</span></h2>
+    <ul class="recursos-lista">
+      <li class="recurso">
+        <div class="recurso-imagem" aria-hidden="true"><div class="composicao">
+          <div class="caixa-objeto"><img src="img/recurso-01-objeto.webp" width="821" height="821" alt="" loading="lazy" decoding="async" style="--x:15.34%;--w:100%;--h:100%"></div>
+          <div class="caixa-celular"><img src="img/recurso-01-celular.webp" width="417" height="755" alt="" loading="lazy" decoding="async" style="--x:38%;--y:13.28%;--w:40.53%;--h:73.39%"></div>
+        </div></div>
+        <div class="recurso-texto">
+          <h3>Ficha de cada aluno</h3>
+          <p>Nome do aluno, endereço, trajeto, telefone da família e número de emergência do aluno, guardados sempre no mesmo lugar.</p>
+        </div>
+      </li>
+      <li class="recurso">
+        <div class="recurso-imagem" aria-hidden="true"><div class="composicao">
+          <div class="caixa-objeto"><img src="img/recurso-02-objeto.webp" width="821" height="821" alt="" loading="lazy" decoding="async" style="--x:12.42%;--w:100%;--h:100%"></div>
+          <div class="caixa-celular"><img src="img/recurso-02-celular.webp" width="399" height="760" alt="" loading="lazy" decoding="async" style="--x:30.85%;--y:13.09%;--w:38.82%;--h:73.97%"></div>
+        </div></div>
+        <div class="recurso-texto">
+          <h3>Escola e turno de cada aluno</h3>
+          <p>Cada aluno na escola e no turno certo. Tudo separado e fácil de achar.</p>
+        </div>
+      </li>
+      <li class="recurso">
+        <div class="recurso-imagem" aria-hidden="true"><div class="composicao celular-esquerda">
+          <div class="caixa-objeto"><img src="img/recurso-03-objeto.webp" width="821" height="821" alt="" loading="lazy" decoding="async" style="--x:32.07%;--w:50%;--h:100%"></div>
+          <div class="caixa-celular"><img src="img/recurso-03-celular.webp" width="504" height="745" alt="" loading="lazy" decoding="async" style="--x:43.9%;--y:13.28%;--w:49.02%;--h:72.46%"></div>
+        </div></div>
+        <div class="recurso-texto">
+          <h3>Os pais preenchem por você</h3>
+          <p>Esqueça as fichas manuais. Mande o link para os pais e receba os dados do cadastro dos filhos preenchidos em segundos!</p>
+        </div>
+      </li>
+      <li class="recurso">
+        <div class="recurso-imagem" aria-hidden="true"><div class="composicao celular-esquerda">
+          <div class="caixa-objeto"><img src="img/recurso-04-objeto.webp" width="821" height="821" alt="" loading="lazy" decoding="async" style="--x:29.71%;--w:50%;--h:100%"></div>
+          <div class="caixa-celular"><img src="img/recurso-04-celular.webp" width="399" height="760" alt="" loading="lazy" decoding="async" style="--x:42.06%;--y:13.09%;--w:38.82%;--h:73.97%"></div>
+        </div></div>
+        <div class="recurso-texto">
+          <h3>Lembrete de pagamento</h3>
+          <p>O app avisa quando vence e quando atrasa. Você não esquece de cobrar.</p>
+        </div>
+      </li>
+      <li class="recurso">
+        <div class="recurso-imagem" aria-hidden="true"><div class="composicao celular-esquerda">
+          <div class="caixa-objeto"><img src="img/recurso-05-objeto.webp" width="821" height="821" alt="" loading="lazy" decoding="async" style="--x:33.44%;--w:50%;--h:100%"></div>
+          <div class="caixa-celular"><img src="img/recurso-05-celular.webp" width="504" height="745" alt="" loading="lazy" decoding="async" style="--x:38.9%;--y:13.28%;--w:49.02%;--h:72.46%"></div>
+        </div></div>
+        <div class="recurso-texto">
+          <h3>Cobrança já pronta</h3>
+          <p>A mensagem de cobrança já vem pronta, com o seu Pix. É só mandar.</p>
+        </div>
+      </li>
+      <li class="recurso">
+        <div class="recurso-imagem" aria-hidden="true"><div class="composicao">
+          <div class="caixa-objeto"><img src="img/recurso-06-objeto.webp" width="821" height="821" alt="" loading="lazy" decoding="async" style="--x:10.09%;--w:100%;--h:100%"></div>
+          <div class="caixa-celular"><img src="img/recurso-06-celular.webp" width="417" height="755" alt="" loading="lazy" decoding="async" style="--x:35.4%;--y:13.28%;--w:40.53%;--h:73.39%"></div>
+        </div></div>
+        <div class="recurso-texto">
+          <h3>Quem pagou e quem deve</h3>
+          <p>Veja na hora quem já pagou e quem ainda está devendo no mês todo.</p>
+        </div>
+      </li>
+      <li class="recurso">
+        <div class="recurso-imagem" aria-hidden="true"><div class="composicao">
+          <div class="caixa-objeto"><img src="img/recurso-07-objeto.webp" width="821" height="821" alt="" loading="lazy" decoding="async" style="--x:5.49%;--w:100%;--h:100%"></div>
+          <div class="caixa-celular"><img src="img/recurso-07-celular.webp" width="504" height="745" alt="" loading="lazy" decoding="async" style="--x:30.58%;--y:13.28%;--w:49.02%;--h:72.46%"></div>
+        </div></div>
+        <div class="recurso-texto">
+          <h3>Pagou só uma parte</h3>
+          <p>Anote quanto os pais pagaram e veja na hora quanto ainda falta receber.</p>
+        </div>
+      </li>
+      <li class="recurso">
+        <div class="recurso-imagem" aria-hidden="true"><div class="composicao celular-esquerda">
+          <div class="caixa-objeto"><img src="img/recurso-08-objeto.webp" width="821" height="821" alt="" loading="lazy" decoding="async" style="--x:31.08%;--w:50%;--h:100%"></div>
+          <div class="caixa-celular"><img src="img/recurso-08-celular.webp" width="417" height="755" alt="" loading="lazy" decoding="async" style="--x:47.47%;--y:13.28%;--w:40.53%;--h:73.39%"></div>
+        </div></div>
+        <div class="recurso-texto">
+          <h3>Recibo pelo WhatsApp</h3>
+          <p>Mande o recibo para os pais pelo WhatsApp, sem talão e sem nenhum papel.</p>
+        </div>
+      </li>
+      <li class="recurso">
+        <div class="recurso-imagem" aria-hidden="true"><div class="composicao celular-esquerda">
+          <div class="caixa-objeto"><img src="img/recurso-09-objeto.webp" width="674" height="674" alt="" loading="lazy" decoding="async" style="--x:35.84%;--y:12%;--w:41%;--h:82%"></div>
+          <div class="caixa-celular"><img src="img/recurso-09-celular.webp" width="399" height="760" alt="" loading="lazy" decoding="async" style="--x:47.06%;--y:13.09%;--w:38.82%;--h:73.97%"></div>
+        </div></div>
+        <div class="recurso-texto">
+          <h3>Funciona sem internet</h3>
+          <p>Sem sinal no caminho? Você usa o app normal, mesmo sem internet.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+  <section class="vemai" id="novidades" aria-labelledby="vemai-titulo">
+    <div class="vemai-grade">
+      <div class="vemai-cabecalho">
+        <h2 id="vemai-titulo">O que vem <span class="destaque">por aí</span></h2>
+        <p class="vemai-sub">Novidades que estão chegando no app.</p>
+      </div>
+      <div class="vemai-imagem">
+        <img class="vemai-formas celular" src="img/vemai-formas-celular.svg" width="353" height="450" alt="" loading="lazy">
+        <img class="vemai-formas computador" src="img/vemai-formas.svg" width="586" height="720" alt="" loading="lazy">
+        <img class="vemai-fundo celular" src="img/vemai-fundo-celular.svg" width="313" height="312" alt="" loading="lazy">
+        <img class="vemai-fundo computador" src="img/vemai-fundo.svg" width="500" height="499" alt="" loading="lazy">
+        <img class="vemai-pessoas" src="img/vemai-motorista-crianca.webp" width="1305" height="2100" alt="Motorista de van escolar comemorando ao lado de uma aluna de mochila." loading="lazy" decoding="async">
+      </div>
+      <ul class="vemai-cartoes">
+        <li class="em-breve">
+          <span class="em-breve-icone"><img src="img/icone-rota-do-dia.svg" width="30" height="30" alt=""></span>
+          <div class="em-breve-texto">
+            <div class="em-breve-titulo"><h3>Rota do dia</h3><span class="selo-em-breve">Em breve</span></div>
+            <p>O app monta a ordem das paradas e avisa os pais no embarque e na chegada.</p>
+          </div>
+        </li>
+        <li class="em-breve">
+          <span class="em-breve-icone"><img src="img/icone-receber-pelo-app.svg" width="30" height="30" alt=""></span>
+          <div class="em-breve-texto">
+            <div class="em-breve-titulo"><h3>Receber pelo app</h3><span class="selo-em-breve">Em breve</span></div>
+            <p>Os pais pagam a mensalidade direto pelo app.</p>
+          </div>
+        </li>
+        <li class="em-breve">
+          <span class="em-breve-icone"><img src="img/icone-chegando-no-ios.svg" width="30" height="30" alt=""></span>
+          <div class="em-breve-texto">
+            <div class="em-breve-titulo"><h3>Estamos chegando no iOS</h3><span class="selo-em-breve">Em breve</span></div>
+            <p>O Suavan também vai funcionar no iPhone.</p>
+          </div>
+        </li>
       </ul>
     </div>
-    <div class="acesso-card">
-      <h3>Instalar pela Google Play</h3>
-      <p class="sub">O botão abre a página oficial do Suavan na loja do Google.</p>
-      <a class="play-badge js-play" href="https://play.google.com/store/apps/details?id=io.suavan.motorista"><img src="img/GetItOnGooglePlay_Badge_Web_color_Portuguese-Brazil.svg" alt="Disponível no Google Play" width="189" height="56"></a>
-      <p class="note">Para entrar no app, ninguém do Suavan pede senha, código nem dinheiro.</p>
-      <div class="sep" aria-hidden="true"></div>
-      <h3 class="alt">Prefere tirar uma dúvida antes?</h3>
-      <a class="btn btn-outline js-whats" href="https://wa.me/5511949426358?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20app%20Suavan" target="_blank" rel="noopener"><span class="ms" aria-hidden="true">chat</span> Falar pelo WhatsApp</a>
-      <p class="note">Abre o seu WhatsApp com uma mensagem pronta, e você decide se envia. Veja a <a href="/privacidade/" target="_blank" rel="noopener">Política de Privacidade</a>.</p>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="duvidas" style="background:var(--g50)">
-  <div class="wrap">
-    <div class="sec-tag">Dúvidas</div>
-    <h2 class="sec-title">Perguntas frequentes</h2>
-    <div class="faq" style="margin-top:30px">
-      <details open>
-        <summary>É grátis mesmo? <span class="ms" aria-hidden="true">expand_more</span></summary>
-        <p>É, hoje é grátis: cadastrar alunos, marcar quem pagou e montar a cobrança, sem limite de alunos. Se um dia alguma parte for paga, o Suavan avisa antes, no app e por e-mail, e a cobrança só começa depois que você aceitar os Termos novos.</p>
-      </details>
-      <details>
-        <summary>Como funciona a cobrança dos alunos? <span class="ms" aria-hidden="true">expand_more</span></summary>
-        <p>Quem cobra é você; o app deixa tudo pronto. Ele gera a mensalidade de cada aluno e monta a mensagem com o valor, o vencimento e a sua chave Pix — e você envia pelo WhatsApp, Telegram ou SMS.</p>
-      </details>
-      <details>
-        <summary>O app fica com parte do meu dinheiro? <span class="ms" aria-hidden="true">expand_more</span></summary>
-        <p>Não. O pai paga direto no seu Pix, e o dinheiro cai inteiro na sua conta. O valor da mensalidade é o que você combina com cada família — o app só registra.</p>
-      </details>
-      <details>
-        <summary>O pai pagou só metade. Dá para marcar? <span class="ms" aria-hidden="true">expand_more</span></summary>
-        <p>Dá. Você marca o valor que entrou, e o restante fica em aberto até o pai completar.</p>
-      </details>
-      <details>
-        <summary>Os pais precisam instalar alguma coisa? <span class="ms" aria-hidden="true">expand_more</span></summary>
-        <p>Não. Eles recebem a sua cobrança no WhatsApp, com o valor, o vencimento e o seu Pix, e pagam direto para você. Se quiser, você manda um link para o responsável preencher nome, endereço e contato do aluno.</p>
-      </details>
-      <details>
-        <summary>Como faço para baixar o app? <span class="ms" aria-hidden="true">expand_more</span></summary>
-        <p>Pela Google Play. Toque em "Disponível no Google Play", aqui na página: abre a página do app na loja. Instale, crie a sua conta e cadastre o primeiro aluno. Hoje o app é só para Android.</p>
-      </details>
-      <details>
-        <summary>Funciona sem internet? <span class="ms" aria-hidden="true">expand_more</span></summary>
-        <p>No dia a dia, sim: os dados ficam no seu celular e sobem sozinhos quando pegar rede. Só duas coisas pedem internet: cadastrar uma escola nova, que é confirmada no Google para não duplicar, e gerar um recibo, porque o número dele vem do servidor. Reenviar um recibo já gerado funciona sem internet.</p>
-      </details>
-      <details>
-        <summary>Dá para ver o caminho da van? <span class="ms" aria-hidden="true">expand_more</span></summary>
-        <p>Não. O app cuida dos alunos, das mensalidades e da cobrança: quem pagou, quem está em atraso e a mensagem pronta com o seu Pix.</p>
-      </details>
-      <details>
-        <summary>Os dados dos alunos ficam seguros? <span class="ms" aria-hidden="true">expand_more</span></summary>
-        <p>Ficam num servidor no Brasil, criptografados no celular e no caminho até lá; a Política de Privacidade está em suavan.com.br/privacidade. E se quiser sair, é você quem apaga: Configurações → "Excluir minha conta" apaga tudo, no celular e no servidor.</p>
-      </details>
+  <section class="chegada" aria-labelledby="chegada-titulo">
+    <div class="forma forma-chegada-esquerda" aria-hidden="true"><span></span></div>
+    <div class="chegada-conteudo">
+      <div class="chegada-painel">
+        <h2 id="chegada-titulo">Tudo sob controle e a sua van cheia</h2>
+        <figure class="chegada-imagem">
+          <img src="img/chegada-van.webp" width="1866" height="1111" alt="A van escolar amarela, com o motorista e as crianças acenando pela janela." loading="lazy" decoding="async">
+        </figure>
+        <p class="chegada-sub">Baixe o Suavan, cadastre seus alunos e acompanhe as mensalidades em um só lugar. Sem pagar nada.</p>
+        <a class="selo-play js-play" href="https://play.google.com/store/apps/details?id=io.suavan.motorista&amp;hl=pt_BR">
+          <img src="img/GetItOnGooglePlay_Badge_Web_color_Portuguese-Brazil.svg" width="203" height="60" alt="Disponível no Google Play">
+        </a>
+      </div>
+      <img class="chegada-formas-esquerda celular" src="img/chegada-formas-esquerda-celular.svg" width="36" height="38" alt="">
+      <img class="chegada-formas-direita celular" src="img/chegada-formas-direita-celular.svg" width="35" height="39" alt="">
+      <img class="chegada-formas-esquerda computador" src="img/chegada-formas-esquerda.svg" width="50" height="47" alt="">
+      <img class="chegada-formas-direita computador" src="img/chegada-formas-direita.svg" width="49" height="48" alt="">
     </div>
-  </div>
-</section>
+  </section>
+  <section class="ajuda" id="contato" aria-labelledby="ajuda-titulo">
+    <div class="ajuda-conteudo">
+      <div class="ajuda-barra">
+        <div class="ajuda-texto">
+          <h2 id="ajuda-titulo">Precisa de ajuda?</h2>
+          <p>Fale com o suporte do Suavan pelo WhatsApp ou por email.</p>
+        </div>
+        <div class="ajuda-botoes">
+          <a class="botao botao-whatsapp js-whats" href="/whatsapp/" target="_blank" rel="noopener"><img src="img/icone-whatsapp.svg" width="24" height="24" alt="">WhatsApp</a>
+          <a class="botao botao-email-amarelo js-email" href="mailto:suporte@suavan.com.br"><img src="img/icone-email.svg" width="24" height="24" alt="">Email</a>
+        </div>
+      </div>
+      <img class="ajuda-formas-esquerda celular" src="img/ajuda-formas-esquerda-celular.svg" width="34" height="39" alt="">
+      <img class="ajuda-formas-direita celular" src="img/ajuda-formas-direita-celular.svg" width="34" height="39" alt="">
+      <img class="ajuda-formas-esquerda computador" src="img/ajuda-formas-esquerda.svg" width="47" height="48" alt="">
+      <img class="ajuda-formas-direita computador" src="img/ajuda-formas-direita.svg" width="48" height="48" alt="">
+    </div>
+  </section>
+
+  <section class="duvidas" id="duvidas" aria-labelledby="duvidas-titulo">
+    <div class="forma forma-duvidas-direita" aria-hidden="true"><img src="img/fundo-forma-duvidas-direita.svg" width="661" height="818" alt="" loading="lazy"></div>
+    <div class="duvidas-conteudo">
+      <h2 id="duvidas-titulo">Tire <span class="destaque">suas dúvidas</span></h2>
+      <p class="duvidas-sub">As perguntas mais comuns dos motoristas sobre o Suavan.</p>
+      <!-- O FAQPage do JSON-LD, no topo, repete estas perguntas e respostas: mudou aqui, muda lá. -->
+      <div class="duvidas-lista">
+        <details class="duvida">
+          <summary><span class="duvida-numero">01</span><span class="duvida-pergunta">O Suavan é grátis mesmo?</span><span class="duvida-icone" aria-hidden="true"></span></summary>
+          <p class="duvida-resposta">É, hoje é grátis: cadastrar alunos, marcar quem pagou e montar a cobrança, sem limite de alunos. Se um dia alguma parte for paga, o Suavan avisa antes, no app e por e-mail, e a cobrança só começa depois que você aceitar os Termos novos.</p>
+        </details>
+        <details class="duvida">
+          <summary><span class="duvida-numero">02</span><span class="duvida-pergunta">O dinheiro dos pais passa pelo Suavan?</span><span class="duvida-icone" aria-hidden="true"></span></summary>
+          <p class="duvida-resposta">Não. O pai paga direto no seu Pix, e o dinheiro cai inteiro na sua conta. O app só registra.</p>
+        </details>
+        <details class="duvida">
+          <summary><span class="duvida-numero">03</span><span class="duvida-pergunta">Quem define o valor da mensalidade?</span><span class="duvida-icone" aria-hidden="true"></span></summary>
+          <p class="duvida-resposta">Você. O valor é o que você combina com cada família, e o app só registra.</p>
+        </details>
+        <details class="duvida">
+          <summary><span class="duvida-numero">04</span><span class="duvida-pergunta">Os pais precisam baixar o app?</span><span class="duvida-icone" aria-hidden="true"></span></summary>
+          <p class="duvida-resposta">Não. Eles recebem a sua cobrança no WhatsApp, com o valor, o vencimento e o seu Pix, e pagam direto para você. Se quiser, você manda um link para o responsável preencher nome, endereço e contato do aluno.</p>
+        </details>
+        <details class="duvida">
+          <summary><span class="duvida-numero">05</span><span class="duvida-pergunta">Funciona no iPhone?</span><span class="duvida-icone" aria-hidden="true"></span></summary>
+          <p class="duvida-resposta">Ainda não. Hoje o Suavan é só para Android, pela Google Play. A versão para iPhone está a caminho.</p>
+        </details>
+        <details class="duvida">
+          <summary><span class="duvida-numero">06</span><span class="duvida-pergunta">Preciso entender de tecnologia?</span><span class="duvida-icone" aria-hidden="true"></span></summary>
+          <p class="duvida-resposta">Não. Se você usa o WhatsApp, você usa o Suavan: cadastra o aluno, marca quem pagou e manda a cobrança pronta.</p>
+        </details>
+      </div>
+    </div>
+  </section>
 </main>
 
-<footer>
-  <div class="wrap row">
-    <div class="foot-brand">
-      <a class="home" href="#topo" aria-label="Início — voltar ao topo"><span class="wordmark">SUAVAN</span></a>
-      <nav class="social" aria-label="Redes sociais do Suavan">
-        <a href="https://www.instagram.com/suavan.br/" target="_blank" rel="noopener" data-rede="instagram" aria-label="Instagram do Suavan (abre em nova aba)"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a>
-        <a href="https://www.tiktok.com/@suavan.br" target="_blank" rel="noopener" data-rede="tiktok" aria-label="TikTok do Suavan (abre em nova aba)"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg></a>
-        <a href="https://www.facebook.com/" target="_blank" rel="noopener" data-rede="facebook" hidden aria-label="Facebook do Suavan (abre em nova aba)"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/></svg></a>
-        <a href="https://www.linkedin.com/company/sua-van/" target="_blank" rel="noopener" data-rede="linkedin" aria-label="LinkedIn do Suavan (abre em nova aba)"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
-      </nav>
+<footer class="rodape">
+  <div class="rodape-conteudo">
+    <div class="rodape-principal">
+      <div class="rodape-marca">
+        <a class="logo" href="#topo" aria-label="Suavan, voltar ao topo">
+          <img class="logo-icone" src="img/icone-app.jpg" width="36" height="36" alt="" loading="lazy">
+          <span class="logo-palavra" aria-hidden="true">sua<span>van</span></span>
+        </a>
+        <!-- As redes do Figma (531:745, de 21/11), na ordem dele. O Figma as põe na linha de baixo; ficaram ao
+             lado do logo a pedido dele. ⛔ Rede nova = link aqui + linha no script das redes. O Facebook fica
+             escondido (hidden) até a página existir: com o endereço dele, troca o href e sai o hidden. -->
+        <nav class="rodape-redes" aria-label="Redes sociais do Suavan">
+          <a href="https://www.instagram.com/suavan.br/" target="_blank" rel="noopener" data-rede="instagram" aria-label="Instagram do Suavan (abre em nova aba)"><img src="img/icone-instagram.svg" width="24" height="24" alt="" loading="lazy"></a>
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener" data-rede="facebook" hidden aria-label="Facebook do Suavan (abre em nova aba)"><img src="img/icone-facebook.svg" width="24" height="24" alt="" loading="lazy"></a>
+          <a href="https://www.linkedin.com/company/sua-van/" target="_blank" rel="noopener" data-rede="linkedin" aria-label="LinkedIn do Suavan (abre em nova aba)"><img src="img/icone-linkedin.svg" width="24" height="24" alt="" loading="lazy"></a>
+          <a href="https://www.tiktok.com/@suavan.br" target="_blank" rel="noopener" data-rede="tiktok" aria-label="TikTok do Suavan (abre em nova aba)"><img src="img/icone-tiktok.svg" width="24" height="24" alt="" loading="lazy"></a>
+        </nav>
+      </div>
+      <ul class="rodape-links">
+        <!-- as páginas que já estão no ar (pedido dele em 21/11: "devemos reaproveitar o que temos") -->
+        <li><a href="/termos/" target="_blank" rel="noopener">Termos de uso</a></li>
+        <li><a href="/privacidade/" target="_blank" rel="noopener">Política de Privacidade</a></li>
+        <li><a href="https://suavan.com.br/excluir-conta/">Como excluir sua conta</a></li>
+      </ul>
     </div>
-    <nav class="links" aria-label="Links do rodapé">
-      <a href="https://suavan.com.br/">Página principal</a>
-      <a href="https://motorista.suavan.com.br/" aria-current="page">Para motoristas</a>
-      <a href="https://pais.suavan.com.br/">Para famílias</a>
-      <a href="/privacidade/" target="_blank" rel="noopener">Privacidade</a>
-      <a href="/termos/" target="_blank" rel="noopener">Termos</a>
-      <a href="https://suavan.com.br/excluir-conta/">Excluir conta</a>
-      <a href="mailto:suporte@suavan.com.br">suporte@suavan.com.br</a>
-    </nav>
-    <span class="copy">© <span id="ano">2026</span> Suavan</span>
-    <span class="tm">Google Play e o logotipo do Google Play são marcas da Google LLC.</span>
+    <hr class="rodape-divisor">
+    <div class="rodape-legal">
+      <div class="rodape-contato">
+        <span>WhatsApp: <a class="js-whats" href="/whatsapp/" target="_blank" rel="noopener">(11) 94942-6358</a></span>
+        <span>Email: <a class="js-email" href="mailto:suporte@suavan.com.br">suporte@suavan.com.br</a></span>
+      </div>
+      <!-- A linha de direitos autorais do kit de 07/11 (pedido dele em 21/11: levar da antiga). O Figma tinha "Suavan © 2026";
+           na versão de 21/11 com as redes, esse texto saiu. A linha fica até ele decidir.
+           O ano vem do relógio de quem visita, como na landing que estava no ar (pedido dele em 21/11). -->
+      <p class="rodape-direitos"><span>© <span id="ano">2026</span> Suavan.</span> <span>Todos os direitos reservados.</span></p>
+    </div>
   </div>
 </footer>
 
+<div class="flutuantes">
+  <a class="flutuante flutuante-topo" href="#topo" aria-label="Voltar ao topo"><span aria-hidden="true"></span></a>
+  <a class="flutuante flutuante-whatsapp js-whats" href="/whatsapp/" target="_blank" rel="noopener" aria-label="Falar com o suporte pelo WhatsApp"><img src="img/icone-whatsapp-flutuante.svg" width="30" height="30" alt=""></a>
+</div>
+
 <script>
-  // Etiqueta de origem (elo 3 da atribuição — a corrente inteira está em "UTMs — Padrão e Links
-  // Prontos" §7): o UTM do link de entrada vira "via fonte/meio" no fim da mensagem do WhatsApp,
-  // para o lead chegar já etiquetado. Guarda de FORMA, não de conteúdo: apara as pontas, passa
-  // para minúsculas e aceita só slug (a-z, 0-9, - e _, até 24); e-mail, acento, espaço no meio
-  // ou quebra de linha descartam o valor. O que pode ser um canal (e o que é dado pessoal, que
-  // nunca entra num UTM) é regra do padrão, no doc — não deste código. Sem fonte, nada.
-  // Nada é guardado: a origem só existe no carregamento que trouxe o UTM (o Clarity lê o mesmo).
-  function origemUtm(search){
-    var p = new URLSearchParams(search);
-    function slug(k){ var v = (p.get(k) || '').trim().toLowerCase(); return /^[a-z0-9_-]{1,24}$/.test(v) ? v : ''; }
-    var fonte = slug('utm_source');
-    if(!fonte) return '';
-    var meio = slug('utm_medium');
-    return meio ? fonte + '/' + meio : fonte;
-  }
+  // O menu aberto do celular: o ≡ abre, o X, qualquer link e o Esc fecham.
+  // Aberto, o foco fica dentro dele (é um diálogo) e a página de trás não rola.
+  (function () {
+    var abrir = document.querySelector('.menu-botao');
+    var menu = document.getElementById('menu-celular');
+    var fechar = menu.querySelector('.menu-fechar');
+    var computador = window.matchMedia('(min-width: 1200px)');
 
-  // De onde veio o clique — vira a tag `cta_origem` no Clarity. ⛔ Valores fixos
-  // (id da seção, hero, cabecalho, rodape): nada digitado pelo usuário entra em tag.
-  function origem(el){
-    var s = el.closest('section, footer, header');
-    if(!s) return 'outro';
-    if(s.tagName === 'FOOTER') return 'rodape';
-    if(s.tagName === 'HEADER') return 'cabecalho';
-    if(s.id) return s.id;                       // como | app | compromissos | acesso | familias | duvidas
-    if(s.classList.contains('hero')) return 'hero';
-    return 'outro';
-  }
-
-  // Repasse de UTM entre as três páginas: a query string atual vai junto em todo link para a raiz
-  // de suavan.com.br, motorista. ou pais. — os botões do garfo (.out) e os links do rodapé. Assim a
-  // origem que entrou na principal chega ao formulário do subdomínio (e vira o "via …" na mensagem).
-  // ⛔ A query entra antes do #hash; sem UTM na URL atual, nada muda.
-  (function(){
-    var extra = window.location.search;
-    function repassarUtm(el){
-      if(!extra) return;
-      var u = new URL(el.href);
-      if(!/(^|\.)suavan\.com\.br$/.test(u.hostname) || u.pathname !== '/') return; // só a raiz das três landings
-      new URLSearchParams(extra).forEach(function(v, k){ u.searchParams.set(k, v); });
-      el.href = u.toString();
+    function definir(aberto, devolverFoco) {
+      menu.hidden = !aberto;
+      abrir.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+      document.documentElement.classList.toggle('menu-aberto', aberto);
+      if (aberto) {
+        fechar.focus();
+      } else if (devolverFoco) {
+        abrir.focus({ preventScroll: true });
+      }
     }
-    document.querySelectorAll('a.out, footer nav.links a[href^="https://"]').forEach(repassarUtm);
-  })();
 
-  // Links externos (.out): mede o clique no Clarity (segmento + origem).
-  (function(){
-    document.querySelectorAll('a.out').forEach(function(el){
-      // Clarity: ao clicar, marca o segmento da sessão e conta o evento do garfo.
-      el.addEventListener('click', function(){
-        if(typeof window.clarity !== 'function') return;
-        var href = el.getAttribute('href') || '';
-        var seg = href.indexOf('motorista.suavan') > -1 ? 'motorista'
-                : (href.indexOf('pais.suavan') > -1 ? 'pai' : 'outro');
-        window.clarity('set', 'segmento', seg);        // filtra gravações/heatmap por perfil
-        window.clarity('set', 'cta_origem', origem(el)); // onde clicou (hero, secao, garfo, rodape)
-        window.clarity('event', 'cta_' + seg);          // conta o clique: cta_motorista / cta_pai
-      });
+    abrir.addEventListener('click', function () { definir(true); });
+    fechar.addEventListener('click', function () { definir(false, true); });
+    menu.addEventListener('click', function (e) {
+      if (e.target.closest('a')) definir(false, false);
     });
-  })();
-
-  // Menu ≡ do celular: abre o painel de links sob o cabeçalho; qualquer link, ou Esc, fecha.
-  (function(){
-    var btn = document.querySelector('.menu'), nav = document.getElementById('nav-links');
-    if(!btn || !nav) return;
-    function set(open){
-      var wasInside = nav.contains(document.activeElement);
-      nav.classList.toggle('open', open);
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      btn.querySelector('.ms').textContent = open ? 'close' : 'menu';
-      btn.setAttribute('aria-label', open ? 'Fechar o menu' : 'Abrir o menu');
-      // Teclado: ao abrir, o foco vai para o primeiro link; ao fechar, volta para o botão.
-      if(open){ var first = nav.querySelector('a'); if(first) first.focus(); }
-      else if(wasInside){ btn.focus(); }
-    }
-    btn.addEventListener('click', function(){ set(!nav.classList.contains('open')); });
-    nav.addEventListener('click', function(e){ if(e.target.closest('a')) set(false); });
-    document.addEventListener('keydown', function(e){ if(e.key === 'Escape' && nav.classList.contains('open')) set(false); });
-  })();
-
-  // Redes sociais (rodapé): um evento por rede, com nome LITERAL — regra §1-Z vale para o site.
-  // ⛔ Rede nova = link no HTML + linha aqui (Facebook entra quando a página existir).
-  (function(){
-    var eventos = { instagram: 'social_instagram', tiktok: 'social_tiktok', linkedin: 'social_linkedin', facebook: 'social_facebook' };
-    document.querySelectorAll('footer .social a[data-rede]').forEach(function(el){
-      el.addEventListener('click', function(){
-        var ev = eventos[el.getAttribute('data-rede')];
-        if(ev && typeof window.clarity === 'function'){ window.clarity('event', ev); }
-      });
+    document.addEventListener('keydown', function (e) {
+      if (menu.hidden) return;
+      if (e.key === 'Escape') { definir(false, true); return; }
+      if (e.key !== 'Tab') return;
+      var focaveis = menu.querySelectorAll('a[href], button');
+      var primeiro = focaveis[0], ultimo = focaveis[focaveis.length - 1];
+      if (e.shiftKey && document.activeElement === primeiro) { e.preventDefault(); ultimo.focus(); }
+      else if (!e.shiftKey && document.activeElement === ultimo) { e.preventDefault(); primeiro.focus(); }
+    });
+    // Se a tela crescer até o tamanho do computador com o menu aberto, ele fecha.
+    computador.addEventListener('change', function (e) {
+      if (e.matches && !menu.hidden) definir(false, false);
     });
   })();
 
@@ -738,11 +1077,42 @@
   // O "2026" no HTML é só reserva para quem estiver sem JavaScript.
   (function(){ var el = document.getElementById("ano"); if(el){ el.textContent = new Date().getFullYear(); } })();
 
+  // ---------- a medição no Clarity (o mapa dos itens: "Landing nova do motorista", §7, no cofre) ----------
+  // O Clarity só existe depois do aceite no aviso (consent.js). Antes, as chamadas esperam numa fila
+  // em memória; quem recusou fala com um no-op. Nenhum botão depende do Clarity para funcionar.
+
+  // De onde veio o clique: vira a tag `cta_origem`. ⛔ Valores fixos (o lugar na página):
+  // nada digitado pelo usuário entra em tag.
+  function origem(el) {
+    if (el.closest('.menu-celular')) return 'menu';
+    if (el.closest('.flutuantes')) return 'flutuante';
+    if (el.closest('.chave')) return 'cabecalho'; // no celular, a chave fica logo abaixo do cabeçalho
+    var s = el.closest('section, footer, header');
+    if (!s) return 'outro';
+    if (s.tagName === 'FOOTER') return 'rodape';
+    if (s.tagName === 'HEADER') return 'cabecalho';
+    if (s.id) return s.id;                        // contato (a ajuda) | duvidas
+    if (s.classList.contains('hero')) return 'hero';
+    if (s.classList.contains('chegada')) return 'chegada';
+    return 'outro';
+  }
+
+  // Um clique que conta: marca o segmento e a origem e conta o evento. ⛔ O nome do evento é sempre
+  // uma constante escrita por quem chama, nunca montado com variável (regra §1-Z, vale para o site).
+  function medir(el, segmento, evento) {
+    el.addEventListener('click', function () {
+      if (typeof window.clarity !== 'function') return;
+      window.clarity('set', 'segmento', segmento);
+      window.clarity('set', 'cta_origem', origem(el));
+      window.clarity('event', evento);
+    });
+  }
+
   // Etiqueta de origem no link da Play (elo 4 da atribuição, "UTMs — Padrão e Links Prontos" §7):
   // o UTM do link de entrada vai no parâmetro `referrer` do link da loja, que a Play guarda e mostra
   // no Console (Aquisição). Mesma guarda de FORMA da origemUtm (slug a-z, 0-9, - e _, até 24),
   // com a campanha e a variação junto. Sem fonte, nada: o link da loja fica como está no HTML.
-  // ⛔ A origemUtm não muda: ela é idêntica à da página dos pais, e a prova das duas exige isso.
+  // A função é a da landing antiga, sem mudar um caractere.
   function referrerPlay(search){
     var p = new URLSearchParams(search);
     function slug(k){ var v = (p.get(k) || '').trim().toLowerCase(); return /^[a-z0-9_-]{1,24}$/.test(v) ? v : ''; }
@@ -753,45 +1123,60 @@
     return partes.join('&');
   }
 
-  // Botões da Play (.js-play: cabeçalho, selo do topo, botão do meio e selo da seção "Baixar o app").
-  // O href do HTML já é o link limpo da loja, então sem JavaScript o botão funciona igual.
-  (function(){
+  // Selos da Play (.js-play: o do topo e o da chegada). O href do HTML já é o link da loja, então,
+  // sem JavaScript, o selo funciona igual.
+  (function () {
     var ref = referrerPlay(window.location.search);
-    document.querySelectorAll('.js-play').forEach(function(el){
-      if(ref){ var u = new URL(el.href); u.searchParams.set('referrer', ref); el.href = u.toString(); } // set() codifica = e &
-      el.addEventListener('click', function(){
-        if(typeof window.clarity !== 'function') return;
-        window.clarity('set', 'segmento', 'motorista');
-        window.clarity('set', 'cta_origem', origem(el));
-        window.clarity('event', 'play_abrir');
-      });
+    document.querySelectorAll('.js-play').forEach(function (el) {
+      if (ref) { var u = new URL(el.href); u.searchParams.set('referrer', ref); el.href = u.toString(); } // set() codifica = e &
+      medir(el, 'motorista', 'play_abrir');
     });
   })();
 
-  // "Falar pelo WhatsApp": um link comum, que abre a conversa com a mensagem pronta. Sem formulário,
-  // nenhum dado é pedido; o "— via fonte/meio" vem da origemUtm, como antes no pedido de acesso.
-  // O evento mantém o nome antigo (acesso_whatsapp_enviar) para a série do Clarity não quebrar.
-  (function(){
-    var WHATS = '5511949426358';
-    var via = origemUtm(window.location.search); // '' quando o link não trouxe UTM
-    var msg = 'Olá, tenho uma dúvida sobre o app Suavan' + (via ? ' — via ' + via : '');
-    document.querySelectorAll('.js-whats').forEach(function(el){
-      el.href = 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(msg);
-      el.addEventListener('click', function(){
-        if(typeof window.clarity !== 'function') return;
-        window.clarity('set', 'segmento', 'motorista');
-        window.clarity('set', 'cta_origem', origem(el));
-        window.clarity('event', 'acesso_whatsapp_enviar');
-      });
+  // WhatsApp do suporte: todo botão (classe js-whats) leva ao direcionador /whatsapp/, que abre a
+  // conversa com a mensagem pronta e é o único lugar do número. O UTM do link de entrada vai junto,
+  // para a mensagem terminar com "— via fonte/meio" ("UTMs — Padrão e Links Prontos" §7, elo 3).
+  // O evento mantém o nome da antiga (acesso_whatsapp_enviar), para a série do Clarity não quebrar.
+  (function () {
+    var extra = window.location.search;
+    document.querySelectorAll('.js-whats').forEach(function (el) {
+      if (extra) el.setAttribute('href', el.getAttribute('href') + extra);
+      medir(el, 'motorista', 'acesso_whatsapp_enviar');
     });
   })();
 
-  // FAQ: um evento só para qualquer pergunta aberta. ⛔ Sem o texto da pergunta no
-  // nome — nome de evento é fixo (regra §1-Z, vale para o site também).
+  // E-mail do suporte (.js-email: o do menu, o da ajuda e o do rodapé). Evento novo desta landing.
+  document.querySelectorAll('.js-email').forEach(function (el) { medir(el, 'motorista', 'email_abrir'); });
+
+  // Redes sociais (rodapé): um evento por rede, com os nomes da antiga, LITERAIS (regra §1-Z), agora com
+  // o segmento e a origem, como os outros cliques. ⛔ Rede nova = link no HTML + linha aqui.
+  (function () {
+    var eventos = { instagram: 'social_instagram', tiktok: 'social_tiktok', linkedin: 'social_linkedin', facebook: 'social_facebook' };
+    document.querySelectorAll('.rodape-redes a[data-rede]').forEach(function (el) {
+      var evento = eventos[el.getAttribute('data-rede')];
+      if (evento) medir(el, 'motorista', evento);
+    });
+  })();
+
+  // "Para famílias", na chave (.js-familias): o UTM do link de entrada vai junto para a página das
+  // famílias, e o clique conta como o "Sou pai ou mãe" da antiga (cta_pai, com o segmento pai).
+  (function () {
+    var extra = window.location.search;
+    document.querySelectorAll('.js-familias').forEach(function (el) {
+      if (extra) {
+        var u = new URL(el.href);
+        new URLSearchParams(extra).forEach(function (v, k) { u.searchParams.set(k, v); });
+        el.href = u.toString(); // a query entra antes do #hash
+      }
+      medir(el, 'pai', 'cta_pai');
+    });
+  })();
+
+  // Dúvidas: um evento só para qualquer pergunta aberta. ⛔ Sem o texto da pergunta no nome:
+  // nome de evento é fixo (regra §1-Z, vale para o site também).
   document.querySelectorAll('#duvidas details').forEach(function(d){
     d.addEventListener('toggle', function(){ if(d.open && typeof window.clarity === 'function'){ window.clarity('event', 'faq_abrir'); } });
   });
 </script>
-
 </body>
 </html>

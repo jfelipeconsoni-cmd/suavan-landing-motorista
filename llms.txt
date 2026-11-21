@@ -1,0 +1,22 @@
+# Suavan
+
+> O Suavan é um app de van escolar: o motorista organiza alunos, mensalidades e cobrança.
+
+Aplicativo para motorista de transporte escolar: cadastre alunos, veja quem está em atraso e mande a cobrança pronta no WhatsApp com a sua chave Pix. Hoje é grátis, sem limite de alunos.
+
+- Site do motorista: https://motorista.suavan.com.br
+- O app na Google Play (Android): https://play.google.com/store/apps/details?id=io.suavan.motorista
+- Site das famílias: https://suavan.com.br
+
+## Propriedade
+
+O Suavan, seu nome, sua marca, seu código-fonte, seu design e seu conteúdo são
+propriedade privada e exclusiva do Suavan. Todos os direitos reservados.
+
+O conteúdo deste site pode ser lido e citado para informar sobre o que o Suavan
+é. Não está autorizado o uso do código, do design ou da marca para criar
+produtos derivados, nem para reproduzir o produto.
+
+## Contato
+
+suporte@suavan.com.br

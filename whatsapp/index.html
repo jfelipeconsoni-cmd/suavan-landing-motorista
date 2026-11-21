@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Suavan — WhatsApp do suporte</title>
+<!--
+  O direcionador do WhatsApp do suporte (pedido dele em 21/11/2026: "crie o direcionador de links
+  para o número do suporte"). Todo botão de WhatsApp da landing traz para cá, e daqui a pessoa segue
+  para a conversa com o suporte, com a mensagem pronta; ela decide se envia.
+  O número mora só neste arquivo, em três lugares (o WHATS do script, o refresh do noscript e o botão).
+  O link também serve fora do site (bio, Play, e-mail): https://motorista.suavan.com.br/whatsapp/
+  Com UTM no link (?utm_source=instagram&utm_medium=bio), a mensagem termina com "— via instagram/bio"
+  ("UTMs — Padrão e Links Prontos" §7, elo 3). Nada é guardado.
+-->
+<noscript><meta http-equiv="refresh" content="0; url=https://wa.me/5511949426358?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20app%20Suavan"></noscript>
+<style>
+  body {
+    margin: 0; min-height: 100vh; box-sizing: border-box; padding: 24px 20px;
+    display: flex; align-items: center; justify-content: center; text-align: center;
+    background: #FCF7EE; color: #111827;
+    font: 400 16px/1.5 Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  main { max-width: 360px; }
+  h1 { margin: 0 0 8px; font-size: 20px; line-height: 1.3; }
+  p { margin: 0 0 24px; color: #636A77; }
+  p a { color: inherit; }
+  /* tinta sobre o verde do WhatsApp: o branco não dá leitura nesse verde */
+  .botao {
+    display: inline-block; padding: 12px 24px; border-radius: 999px;
+    background: #25D366; color: #111827; font-weight: 600; text-decoration: none;
+  }
+  .botao:hover { background: #1EBE5A; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Abrindo o WhatsApp do suporte do Suavan</h1>
+  <p>Abre o seu WhatsApp com uma mensagem pronta, e você decide se envia. Veja a <a href="/privacidade/">Política de Privacidade</a>.</p>
+  <a class="botao" id="abrir" href="https://wa.me/5511949426358?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20app%20Suavan">Abrir o WhatsApp</a>
+</main>
+<script>
+  // Etiqueta de origem (elo 3 da atribuição, "UTMs — Padrão e Links Prontos" §7): a mesma função
+  // da landing que estava no ar, sem mudar um caractere (a prova do §7 exige as cópias idênticas).
+  function origemUtm(search){
+    var p = new URLSearchParams(search);
+    function slug(k){ var v = (p.get(k) || '').trim().toLowerCase(); return /^[a-z0-9_-]{1,24}$/.test(v) ? v : ''; }
+    var fonte = slug('utm_source');
+    if(!fonte) return '';
+    var meio = slug('utm_medium');
+    return meio ? fonte + '/' + meio : fonte;
+  }
+
+  // A mensagem é a do site que estava no ar; com origem, termina com "— via fonte/meio".
+  (function(){
+    var WHATS = '5511949426358';
+    var via = origemUtm(window.location.search); // '' quando o link não trouxe UTM
+    var msg = 'Olá, tenho uma dúvida sobre o app Suavan' + (via ? ' — via ' + via : '');
+    var url = 'https://wa.me/' + WHATS + '?text=' + encodeURIComponent(msg);
+    document.getElementById('abrir').href = url;
+    window.location.replace(url);
+  })();
+</script>
+</body>
+</html>

@@ -23,6 +23,13 @@
  * clarity('consent') depois dele. O aceite fica guardado POR SUBDOMÍNIO
  * (localStorage é por origem): quem aceita em suavan.com.br vê o aviso de novo
  * em motorista. e pais. — é o preço de três origens, não um defeito.
+ *
+ * 21/11/2026: duas coisas, sem mexer no portão. (1) O visual do aviso pode vir
+ * da página: com data-banner-style="page" no <script> que carrega este arquivo,
+ * o aviso sai sem o estilo embutido e com as classes consent-banner-*, que o
+ * CSS da página desenha (a landing nova do motorista). Sem o atributo, o aviso
+ * é o de sempre. (2) Em localhost, aceitar não carrega a tag: as chamadas vão
+ * para o console do navegador, e o teste local não vira sessão no painel.
  */
 (function () {
   'use strict';
@@ -32,6 +39,14 @@
   // Relativa de propósito: cada subdomínio tem a SUA Política (17/09/2026), e o
   // aviso deve levar à que descreve o Clarity daquela página.
   var POLICY_URL = '/privacidade/';
+
+  /* O visual do aviso (21/11/2026): o atributo vem do <script> que carrega este
+     arquivo, e o document.currentScript só existe enquanto ele executa. */
+  var currentScript = document.currentScript;
+  var PAGE_STYLED = !!currentScript && currentScript.getAttribute('data-banner-style') === 'page';
+
+  /* Teste local (21/11/2026): em localhost a tag não carrega (ver loadClarity). */
+  var IS_LOCAL = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(window.location.hostname);
 
   /* FILA ANTES DO ACEITE (16/09/2026). As páginas chamam window.clarity('event', …)
      e window.clarity('set', …) nos cliques (cta_motorista, acesso_whatsapp_enviar…).
@@ -66,6 +81,7 @@
 
   /* Snippet oficial do Clarity, inalterado — só passou a rodar sob demanda. */
   function loadClarity() {
+    if (IS_LOCAL) { logLocally(); return; }
     (function (c, l, a, r, i, t, y) {
       c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments); };
       t = l.createElement(r); t.async = 1;
@@ -80,6 +96,17 @@
     window.clarity('consent');
   }
 
+  /* Em localhost: nada vai para a Microsoft. A fila e as chamadas seguintes
+     aparecem no console do navegador, para conferir os eventos da página. */
+  function logLocally() {
+    var queued = window.clarity.q || [];
+    window.clarity = function () {
+      console.info('[Clarity em teste local, nada é enviado]', Array.prototype.slice.call(arguments).join(' '));
+    };
+    queued.forEach(function (args) { window.clarity.apply(null, args); });
+    window.clarity('consent');
+  }
+
   /* Recusou: a fila em memória é descartada e as páginas passam a falar com
      um no-op — nunca com a rede. */
   function dropQueue() {
@@ -90,48 +117,59 @@
     if (el && el.parentNode) el.parentNode.removeChild(el);
   }
 
+  /* O estilo embutido só entra quando a página não desenha o aviso (PAGE_STYLED). */
+  function setStyle(el, rules) {
+    if (!PAGE_STYLED) el.style.cssText = rules.join(';');
+  }
+
   function showBanner() {
     var wrap = document.createElement('div');
+    wrap.className = 'consent-banner';
     wrap.setAttribute('role', 'dialog');
     wrap.setAttribute('aria-live', 'polite');
     wrap.setAttribute('aria-label', 'Aviso sobre análise de uso');
-    wrap.style.cssText = [
+    setStyle(wrap, [
       'position:fixed', 'left:0', 'right:0', 'bottom:0', 'z-index:9999',
       'background:#111827', 'color:#E5E7EB',
       'font-family:Inter,-apple-system,BlinkMacSystemFont,sans-serif',
       'font-size:14px', 'line-height:1.6',
       'padding:16px 20px', 'box-shadow:0 -2px 16px rgba(0,0,0,.25)'
-    ].join(';');
+    ]);
 
     var inner = document.createElement('div');
-    inner.style.cssText = [
+    inner.className = 'consent-banner-inner';
+    setStyle(inner, [
       'max-width:960px', 'margin:0 auto', 'display:flex',
       'gap:16px', 'align-items:center', 'flex-wrap:wrap',
       'justify-content:space-between'
-    ].join(';');
+    ]);
 
     var text = document.createElement('div');
-    text.style.cssText = 'flex:1 1 320px;min-width:260px';
+    text.className = 'consent-banner-text';
+    setStyle(text, ['flex:1 1 320px', 'min-width:260px']);
     text.innerHTML =
       'Usamos uma ferramenta de análise para entender como o site é usado e ' +
       'melhorá-lo. <strong>Ela só é ativada se você aceitar.</strong> ' +
-      '<a href="' + POLICY_URL + '" target="_blank" rel="noopener" style="color:#FACC15;text-decoration:underline">' +
+      '<a class="consent-banner-link" href="' + POLICY_URL + '" target="_blank" rel="noopener"' +
+      (PAGE_STYLED ? '' : ' style="color:#FACC15;text-decoration:underline"') + '>' +
       'Política de Privacidade</a>';
 
     var actions = document.createElement('div');
-    actions.style.cssText = 'display:flex;gap:10px;flex-shrink:0';
+    actions.className = 'consent-banner-actions';
+    setStyle(actions, ['display:flex', 'gap:10px', 'flex-shrink:0']);
 
     function makeButton(label, primary) {
       var b = document.createElement('button');
       b.type = 'button';
+      b.className = 'consent-banner-button ' + (primary ? 'consent-banner-accept' : 'consent-banner-decline');
       b.textContent = label;
-      b.style.cssText = [
+      setStyle(b, [
         'font-family:inherit', 'font-size:14px', 'font-weight:600',
         'padding:10px 18px', 'border-radius:8px', 'cursor:pointer',
         'border:' + (primary ? 'none' : '1px solid #4B5563'),
         'background:' + (primary ? '#FFC500' : 'transparent'),
         'color:' + (primary ? '#111827' : '#E5E7EB')
-      ].join(';');
+      ]);
       return b;
     }
 
