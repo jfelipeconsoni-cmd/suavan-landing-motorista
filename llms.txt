@@ -4,9 +4,11 @@
 
 Aplicativo para motorista de transporte escolar: cadastre alunos, veja quem está em atraso e mande a cobrança pronta no WhatsApp com a sua chave Pix. Hoje é grátis, sem limite de alunos.
 
-- Site do motorista: https://motorista.suavan.com.br
-- O app na Google Play (Android): https://play.google.com/store/apps/details?id=io.suavan.motorista
-- Site das famílias: https://suavan.com.br
+## Links
+
+- [Site do motorista](https://motorista.suavan.com.br/)
+- [O app na Google Play (Android)](https://play.google.com/store/apps/details?id=io.suavan.motorista)
+- [Site das famílias](https://suavan.com.br/)
 
 ## Propriedade
 
@@ -17,6 +19,9 @@ O conteúdo deste site pode ser lido e citado para informar sobre o que o Suavan
 é. Não está autorizado o uso do código, do design ou da marca para criar
 produtos derivados, nem para reproduzir o produto.
 
+- [Termos de uso](https://motorista.suavan.com.br/termos/)
+- [Política de Privacidade](https://motorista.suavan.com.br/privacidade/)
+
 ## Contato
 
-suporte@suavan.com.br
+- [suporte@suavan.com.br](mailto:suporte@suavan.com.br)
