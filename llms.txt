@@ -2,7 +2,7 @@
 
 > O Suavan é um app de van escolar: o motorista organiza alunos, mensalidades e cobrança.
 
-Aplicativo para motorista de transporte escolar: cadastre alunos, veja quem está em atraso e mande a cobrança pronta no WhatsApp com a sua chave Pix. Hoje é grátis, sem limite de alunos.
+Aplicativo para motorista de transporte escolar: cadastre alunos, veja quem está em atraso e mande a cobrança pronta no WhatsApp com a sua chave Pix. Grátis, sem limite de alunos.
 
 ## Links
 
